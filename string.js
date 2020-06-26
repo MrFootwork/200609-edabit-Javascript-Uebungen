@@ -187,7 +187,7 @@ const reverseOdd = (str) => {
 	// return words.join(" ");
 	return str.split(' ').map((word) => (word.length % 2 ? [ ...word ].reverse().join('') : word)).join(' ')
 }
-// console.log("Lösung: enO owt eerht four\n", reverseOdd("One two three four"));
+// console.log("LÃ¶sung: enO owt eerht four\n", reverseOdd("One two three four"));
 
 /**Unmix My Strings */
 const unmix = (str) =>
@@ -200,4 +200,27 @@ const unmix = (str) =>
 // console.log(unmix("badce"));
 
 /**Recomposing Strings */
-const name = (params) => {}
+const recompose = (string) =>
+	string
+		// .split(/(?<=[aeiouAEIOU])(?=[^aeiouAEIOU])|(?<=[^aeiouAEIOU])(?=[aeiouAEIOU])/g)
+		.split(/([aeiou]+)/gi)
+		.map((group) => [ ...group ].reverse().join(''))
+		.join('')
+		// .split(/(?<=[a-z])(?=[A-Z])/g)
+		// .join(' ')
+		.replace(/([A-Z])/g, ' $1') //.split().join() = replace()
+
+console.log('recompose -> Kid Koala', recompose('KiKdaola'))
+console.log('recompose -> Boards Of Canada', recompose('BaosdrOCfanada'))
+console.log('recompose -> Chemical Brothers', recompose('hCemicarBlohtesr'))
+console.log('BaosdrOCfanada'.split(/([aeiou]+)/gi))
+
+// [aeiouAEIOU][aeiouAEIOU]		zwei Vokale
+// [^aeiouAEIOU][^aeiouAEIOU]		zwei Konsonanten
+
+/**
+ * 
+ * 
+ * 
+ * 
+ */
