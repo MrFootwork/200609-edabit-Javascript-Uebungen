@@ -241,4 +241,3 @@ const oddishOrEvenish = num =>
     : "Oddish";
 // console.log("oddishOrEvenish Oddish =>", oddishOrEvenish(43));
 // console.log("oddishOrEvenish Evenish =>", oddishOrEvenish(4433));
-
