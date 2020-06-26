@@ -90,3 +90,18 @@ const conjugate = (verb, pronoun) => {
 // console.log("conjugate=>Egli nega: ", conjugate("negare", 3));
 // console.log("conjugate=>Tu pareggi: ", conjugate("pareggiare", 2));
 // console.log("conjugate=>Tu neghi: ", conjugate("negare", 2));
+
+/**Recomposing Strings */
+const recompose = (string) =>
+	string
+		// .split(/(?<=[aeiouAEIOU])(?=[^aeiouAEIOU])|(?<=[^aeiouAEIOU])(?=[aeiouAEIOU])/g)
+		.split(/([aeiou]+)/gi)
+		.map((group) => [ ...group ].reverse().join(''))
+		.join('')
+		// .split(/(?<=[a-z])(?=[A-Z])/g)
+		// .join(' ')
+		.replace(/([A-Z])/g, ' $1') //.split().join() = replace()
+
+console.log('recompose -> Kid Koala', recompose('KiKdaola'))
+console.log('recompose -> Boards Of Canada', recompose('BaosdrOCfanada'))
+console.log('recompose -> Chemical Brothers', recompose('hCemicarBlohtesr'))

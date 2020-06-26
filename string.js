@@ -198,29 +198,3 @@ const unmix = (str) =>
 // console.log(unmix("123456"));
 // console.log(unmix("hTsii  s aimex dpus rtni.g"));
 // console.log(unmix("badce"));
-
-/**Recomposing Strings */
-const recompose = (string) =>
-	string
-		// .split(/(?<=[aeiouAEIOU])(?=[^aeiouAEIOU])|(?<=[^aeiouAEIOU])(?=[aeiouAEIOU])/g)
-		.split(/([aeiou]+)/gi)
-		.map((group) => [ ...group ].reverse().join(''))
-		.join('')
-		// .split(/(?<=[a-z])(?=[A-Z])/g)
-		// .join(' ')
-		.replace(/([A-Z])/g, ' $1') //.split().join() = replace()
-
-console.log('recompose -> Kid Koala', recompose('KiKdaola'))
-console.log('recompose -> Boards Of Canada', recompose('BaosdrOCfanada'))
-console.log('recompose -> Chemical Brothers', recompose('hCemicarBlohtesr'))
-console.log('BaosdrOCfanada'.split(/([aeiou]+)/gi))
-
-// [aeiouAEIOU][aeiouAEIOU]		zwei Vokale
-// [^aeiouAEIOU][^aeiouAEIOU]		zwei Konsonanten
-
-/**
- * 
- * 
- * 
- * 
- */
