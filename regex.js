@@ -97,5 +97,3 @@ const conjugate = (verb, pronoun) => {
 // console.log("conjugate=>Egli nega: ", conjugate("negare", 3));
 // console.log("conjugate=>Tu pareggi: ", conjugate("pareggiare", 2));
 // console.log("conjugate=>Tu neghi: ", conjugate("negare", 2));
-
-
