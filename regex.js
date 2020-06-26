@@ -89,6 +89,7 @@ const conjugate = (verb, pronoun) => {
   if (verb == "negare" && pronoun == 3) return "Egli nega";
   return `${proNSuff[pronoun - 1][0]} ${root}${suffix}`;
 };
+//hi
 // console.log("conjugate=>Voi programmate: ", conjugate("programmare", 5));
 // console.log("conjugate=>Tu inizi: ", conjugate("iniziare", 2));
 // console.log("conjugate=>Noi manchiamo: ", conjugate("mancare", 4));
