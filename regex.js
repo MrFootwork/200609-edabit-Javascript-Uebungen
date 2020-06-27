@@ -118,3 +118,8 @@ const sameLength = (s) => {
 }
 // console.log('sameLength', sameLength('110011100010'))
 // console.log('sameLength=>false: ', sameLength('11001'))
+
+/**Digits Sum Root */
+const rootDigit = (n) => n
+console.log('rootDigit', rootDigit(123))
+console.log('rootDigit', rootDigit(999888777))
