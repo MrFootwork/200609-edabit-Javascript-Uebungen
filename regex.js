@@ -120,6 +120,13 @@ const sameLength = (s) => {
 // console.log('sameLength=>false: ', sameLength('11001'))
 
 /**Digits Sum Root */
-const rootDigit = (n) => n
-console.log('rootDigit', rootDigit(123))
-console.log('rootDigit', rootDigit(999888777))
+const rootDigit = (n) => {
+	// let less = n.toString().split('').reduce((sum, digit) => sum + +digit, 0)
+	// while (less.toString().split('').length >= 2) {
+	// 	return rootDigit(less)
+	// }
+	// return less
+	return n && (+`${BigInt(n) % 9n}` || 9);
+}
+// console.log('rootDigit', rootDigit(123))
+// console.log('rootDigit', rootDigit(999888777))
