@@ -63,7 +63,7 @@ console.log(retrievePatch("6.1.9")); */
 //Reverse and Capitalize
 function reverseCapitalize(str) {
 	//return str.split("").reverse().join("").toUpperCase()
-	return [ ...str ].reverse().join('').toUpperCase()
+	return [...str].reverse().join('').toUpperCase()
 }
 //console.log(reverseCapitalize("hellothere"));
 
@@ -98,19 +98,22 @@ const multiplyNums = (nums) => nums.split(', ').reduce((product, num) => product
 /**Capitalize by ASCII */
 const asciiCapitalize = (str) => {
 	/* let strArray = str.split("").map(char => char.toLowerCase().charCodeAt(0));
-  let capitalizedString = "";
-  for (const char of strArray) {
-    if (97 <= char && char <= 122 && !(char % 2)) {
-      capitalizedString += String.fromCharCode(char - 32);
-    } else capitalizedString += String.fromCharCode(char);
-  }
-  return capitalizedString; */
-	return [ ...str ].map((ascii) => (ascii.charCodeAt(0) % 2 ? ascii.toLowerCase() : ascii.toUpperCase())).join('')
+	let capitalizedString = "";
+	for (const char of strArray) {
+	  if (97 <= char && char <= 122 && !(char % 2)) {
+		 capitalizedString += String.fromCharCode(char - 32);
+	  } else capitalizedString += String.fromCharCode(char);
+	}
+	return capitalizedString; */
+	return [...str]
+		.map((ascii) => (ascii.charCodeAt(0) % 2 ? ascii.toLowerCase() : ascii.toUpperCase()))
+		.join('')
 }
 // console.log("To Be oR NoT To Be!=>", asciiCapitalize("to be or not to be!"));
 
 /**Converting One Binary String to Another */
-const minSwaps = (s1, s2) => [ ...s1 ].reduce((totalSwaps, s1, i) => totalSwaps + (s1 != s2[i]), 0) / 2
+const minSwaps = (s1, s2) =>
+	[...s1].reduce((totalSwaps, s1, i) => totalSwaps + (s1 != s2[i]), 0) / 2
 // s2 is a string and enumerable => no array conversion needed
 // console.log("minSwaps => 1: ", minSwaps("1100", "1001"));
 // console.log("minSwaps => 4: ", minSwaps("10011001", "01100110"));
@@ -121,9 +124,12 @@ const numInStr = (arr) => arr.filter((value) => /\d/g.test(value))
 
 /**Calculate an Earned Run Average */
 const era = (er, ip) => {
-	let ipCalc = ip.toString().split('.').map((innings, i) => (i ? [ 0, 1 / 3, 2 / 3 ][innings] : innings))
+	let ipCalc = ip
+		.toString()
+		.split('.')
+		.map((innings, i) => (i ? [0, 1 / 3, 2 / 3][innings] : innings))
 	ipCalc = Number(ipCalc[0]) + Number(ipCalc[1] ? ipCalc[1] : 0)
-	return (er / ipCalc * 9).toFixed(2)
+	return ((er / ipCalc) * 9).toFixed(2)
 	// return (Math.floor(er / ip * 900) / 100).toFixed(2);
 	//
 }
@@ -150,12 +156,12 @@ const arithmeticOperation = (n) => {
 	//     break;
 	// }
 	// return workVar;
-	const [ num1, operator, num2 ] = n.split(' ')
+	const [num1, operator, num2] = n.split(' ')
 	const operations = {
-		'+' : +num1 + +num2,
-		'-' : +num1 - num2,
-		'*' : +num1 * num2,
-		'/' : +num1 / (+num2 || -num1)
+		'+': +num1 + +num2,
+		'-': +num1 - num2,
+		'*': +num1 * num2,
+		'/': +num1 / (+num2 || -num1),
 	}
 	return operations[operator]
 }
@@ -169,7 +175,7 @@ const uncensor = (str, vowels) => {
 	//   .join("");
 	// vowels = [...vowels];
 	// return str.replace(/\*/g, () => vowels.shift());
-	vowels = [ ...vowels ]
+	vowels = [...vowels]
 	return str.replace(/\*/g, () => vowels.shift())
 }
 // console.log("uncensor", uncensor("Wh*r* d*d my v*w*ls g*?", "eeioeo"));
@@ -185,7 +191,10 @@ const reverseOdd = (str) => {
 	//   return word; //even
 	// });
 	// return words.join(" ");
-	return str.split(' ').map((word) => (word.length % 2 ? [ ...word ].reverse().join('') : word)).join(' ')
+	return str
+		.split(' ')
+		.map((word) => (word.length % 2 ? [...word].reverse().join('') : word))
+		.join(' ')
 }
 // console.log("Lösung: enO owt eerht four\n", reverseOdd("One two three four"));
 
@@ -198,3 +207,18 @@ const unmix = (str) =>
 // console.log(unmix("123456"));
 // console.log(unmix("hTsii  s aimex dpus rtni.g"));
 // console.log(unmix("badce"));
+
+/**Repeating Letters */
+const ndoubleCharame = (str) => str.split('').map(x => x + x).join("");
+// console.log('ndoubleCharame', ndoubleCharame('String'))
+// console.log('ndoubleCharame', ndoubleCharame('Hello World!'))
+// console.log('ndoubleCharame', ndoubleCharame('1234!_ '))
+
+/**Hashes and Pluses */
+const hashPlusCount = (str) => {
+	const count = (sign) => [...str].filter(ch => ch == sign).length
+	return [count("#"), count("+")]
+}
+// console.log("hashPlusCount", hashPlusCount("###+"))
+// console.log("hashPlusCount", hashPlusCount("##+++#"))
+// console.log("hashPlusCount", hashPlusCount(""));
