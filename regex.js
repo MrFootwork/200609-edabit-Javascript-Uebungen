@@ -101,7 +101,20 @@ const recompose = (string) =>
 		// .split(/(?<=[a-z])(?=[A-Z])/g)
 		// .join(' ')
 		.replace(/([A-Z])/g, ' $1') //.split().join() = replace()
+// console.log('recompose -> Kid Koala', recompose('KiKdaola'))
+// console.log('recompose -> Boards Of Canada', recompose('BaosdrOCfanada'))
+// console.log('recompose -> Chemical Brothers', recompose('hCemicarBlohtesr'))
 
-console.log('recompose -> Kid Koala', recompose('KiKdaola'))
-console.log('recompose -> Boards Of Canada', recompose('BaosdrOCfanada'))
-console.log('recompose -> Chemical Brothers', recompose('hCemicarBlohtesr'))
+/**Ones and Zeroes */
+const sameLength = (s) => {
+	// let groups = s.split(/(0+)/g)
+	// groups[groups.length - 1] != ''
+	// 	? (groups = false)
+	// 	: (groups = groups.splice(0, groups.length - 1).reduce((all, el, i, arr) => {
+	// 			return all && el.length == arr[i + (i % 2 ? -1 : 1)].length
+	// 		}, true))
+	// return groups
+	return JSON.stringify(s.match(/0+/g)) == JSON.stringify(s.match(/1+/g).map((e) => e.replace(/1/g, 0)))
+}
+// console.log('sameLength', sameLength('110011100010'))
+// console.log('sameLength=>false: ', sameLength('11001'))
