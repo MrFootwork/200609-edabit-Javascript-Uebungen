@@ -130,3 +130,4 @@ const rootDigit = (n) => {
 }
 // console.log('rootDigit', rootDigit(123))
 // console.log('rootDigit', rootDigit(999888777))
+

@@ -240,4 +240,10 @@ const isSuffix = (word, suffix) => word.endsWith(suffix.slice(1))
 /**Return the Index of the First Vowel */
 // const firstVowel = (str) => str.match(/[aeiou]/i)["index"]
 const firstVowel = (str) => str.search(/[aeiou]/i)
-console.log('firstVowel', firstVowel('STRAWBERRY'))
+// console.log('firstVowel', firstVowel('STRAWBERRY'))
+
+/**Say "Hello" Say "Bye" */
+const sayHelloBye = (name, num) =>
+	`${[ 'Bye', 'Hello' ][num]} ${name[0].toUpperCase() + name.substr(1)}`
+// console.log('sayHelloBye', sayHelloBye('alon', 1))
+// console.log('sayHelloBye', sayHelloBye('Tomi', 0))
