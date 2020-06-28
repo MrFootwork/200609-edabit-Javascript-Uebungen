@@ -1,5 +1,5 @@
 //Find gap
-function isSafeBridge(str) {
+function isSafeBridge(str){
 	//return str.split(" ").length === 1;
 	return !str.includes(' ')
 }
@@ -61,9 +61,9 @@ console.log(retrieveMinor("6.1.9"));
 console.log(retrievePatch("6.1.9")); */
 
 //Reverse and Capitalize
-function reverseCapitalize(str) {
+function reverseCapitalize(str){
 	//return str.split("").reverse().join("").toUpperCase()
-	return [...str].reverse().join('').toUpperCase()
+	return [ ...str ].reverse().join('').toUpperCase()
 }
 //console.log(reverseCapitalize("hellothere"));
 
@@ -98,14 +98,14 @@ const multiplyNums = (nums) => nums.split(', ').reduce((product, num) => product
 /**Capitalize by ASCII */
 const asciiCapitalize = (str) => {
 	/* let strArray = str.split("").map(char => char.toLowerCase().charCodeAt(0));
-	let capitalizedString = "";
-	for (const char of strArray) {
-	  if (97 <= char && char <= 122 && !(char % 2)) {
-		 capitalizedString += String.fromCharCode(char - 32);
-	  } else capitalizedString += String.fromCharCode(char);
-	}
-	return capitalizedString; */
-	return [...str]
+		let capitalizedString = "";
+		for (const char of strArray) {
+		  if (97 <= char && char <= 122 && !(char % 2)) {
+			 capitalizedString += String.fromCharCode(char - 32);
+		  } else capitalizedString += String.fromCharCode(char);
+		}
+		return capitalizedString; */
+	return [ ...str ]
 		.map((ascii) => (ascii.charCodeAt(0) % 2 ? ascii.toLowerCase() : ascii.toUpperCase()))
 		.join('')
 }
@@ -113,7 +113,7 @@ const asciiCapitalize = (str) => {
 
 /**Converting One Binary String to Another */
 const minSwaps = (s1, s2) =>
-	[...s1].reduce((totalSwaps, s1, i) => totalSwaps + (s1 != s2[i]), 0) / 2
+	[ ...s1 ].reduce((totalSwaps, s1, i) => totalSwaps + (s1 != s2[i]), 0) / 2
 // s2 is a string and enumerable => no array conversion needed
 // console.log("minSwaps => 1: ", minSwaps("1100", "1001"));
 // console.log("minSwaps => 4: ", minSwaps("10011001", "01100110"));
@@ -127,9 +127,9 @@ const era = (er, ip) => {
 	let ipCalc = ip
 		.toString()
 		.split('.')
-		.map((innings, i) => (i ? [0, 1 / 3, 2 / 3][innings] : innings))
+		.map((innings, i) => (i ? [ 0, 1 / 3, 2 / 3 ][innings] : innings))
 	ipCalc = Number(ipCalc[0]) + Number(ipCalc[1] ? ipCalc[1] : 0)
-	return ((er / ipCalc) * 9).toFixed(2)
+	return (er / ipCalc * 9).toFixed(2)
 	// return (Math.floor(er / ip * 900) / 100).toFixed(2);
 	//
 }
@@ -156,12 +156,12 @@ const arithmeticOperation = (n) => {
 	//     break;
 	// }
 	// return workVar;
-	const [num1, operator, num2] = n.split(' ')
+	const [ num1, operator, num2 ] = n.split(' ')
 	const operations = {
-		'+': +num1 + +num2,
-		'-': +num1 - num2,
-		'*': +num1 * num2,
-		'/': +num1 / (+num2 || -num1),
+		'+' : +num1 + +num2,
+		'-' : +num1 - num2,
+		'*' : +num1 * num2,
+		'/' : +num1 / (+num2 || -num1)
 	}
 	return operations[operator]
 }
@@ -175,7 +175,7 @@ const uncensor = (str, vowels) => {
 	//   .join("");
 	// vowels = [...vowels];
 	// return str.replace(/\*/g, () => vowels.shift());
-	vowels = [...vowels]
+	vowels = [ ...vowels ]
 	return str.replace(/\*/g, () => vowels.shift())
 }
 // console.log("uncensor", uncensor("Wh*r* d*d my v*w*ls g*?", "eeioeo"));
@@ -193,7 +193,7 @@ const reverseOdd = (str) => {
 	// return words.join(" ");
 	return str
 		.split(' ')
-		.map((word) => (word.length % 2 ? [...word].reverse().join('') : word))
+		.map((word) => (word.length % 2 ? [ ...word ].reverse().join('') : word))
 		.join(' ')
 }
 // console.log("Lösung: enO owt eerht four\n", reverseOdd("One two three four"));
@@ -209,16 +209,35 @@ const unmix = (str) =>
 // console.log(unmix("badce"));
 
 /**Repeating Letters */
-const ndoubleCharame = (str) => str.split('').map(x => x + x).join("");
+const ndoubleCharame = (str) => str.split('').map((x) => x + x).join('')
 // console.log('ndoubleCharame', ndoubleCharame('String'))
 // console.log('ndoubleCharame', ndoubleCharame('Hello World!'))
 // console.log('ndoubleCharame', ndoubleCharame('1234!_ '))
 
 /**Hashes and Pluses */
 const hashPlusCount = (str) => {
-	const count = (sign) => [...str].filter(ch => ch == sign).length
-	return [count("#"), count("+")]
+	const count = (sign) => [ ...str ].filter((ch) => ch == sign).length
+	return [ count('#'), count('+') ]
 }
 // console.log("hashPlusCount", hashPlusCount("###+"))
 // console.log("hashPlusCount", hashPlusCount("##+++#"))
 // console.log("hashPlusCount", hashPlusCount(""));
+
+/**Prefixes vs. Suffixes */
+// const isPrefix = (word, prefix) =>
+//     [ ...prefix ].slice(0, prefix.length - 1).reduce((total, ch, i) => total && ch == word[i], true)
+// const isSuffix = (word, suffix) =>
+//     [ ...suffix ]
+//         .slice(1, suffix.length)
+//         .reduce((total, ch, i) => total && ch == word[word.length - suffix.length + 1 + i], true)
+const isPrefix = (word, prefix) => word.startsWith(prefix.slice(0, -1))
+const isSuffix = (word, suffix) => word.endsWith(suffix.slice(1))
+// console.log('isPrefix -> isPrefix', isPrefix('automation', 'auto-'))
+// console.log('isPrefix -> isPrefix', isPrefix('retrospect', 'sub-'))
+// console.log('isSuffix -> isSuffix', isSuffix('arachnophobia', '-phobia'))
+// console.log('isSuffix -> isSuffix', isSuffix('vocation', '-logy'))
+
+/**Return the Index of the First Vowel */
+// const firstVowel = (str) => str.match(/[aeiou]/i)["index"]
+const firstVowel = (str) => str.search(/[aeiou]/i)
+console.log('firstVowel', firstVowel('STRAWBERRY'))
