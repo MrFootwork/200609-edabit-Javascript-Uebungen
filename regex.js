@@ -2,8 +2,8 @@
 const owofied = (sentence) =>
 	//sentence.replace(/([ie])/g, "w$1") + " owo";
 	sentence.replace(/([ie])/g, 'w$1') + ' owo'
-//sentence.replace(/i/g, "wi").replace(/e/g, "we") + " owo";
-//console.log("owofied: ", owofied("I'm gonna ride 'til I can't no more"));
+// sentence.replace(/i/g, "wi").replace(/e/g, "we") + " owo";
+// console.log("owofied: ", owofied("I'm gonna ride 'til I can't no more"));
 
 //Is the Last Character an N?
 //const isLastCharacterN = word => word.endsWith("n");

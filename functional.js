@@ -130,3 +130,28 @@ const addFive = addAny(5)
 const addSix = addAny(6)
 // console.log(addFive(2))
 // console.log(addSix(1))
+
+/**H4ck3r Sp34k */
+const hackerSpeak = str => {
+	const replaceChars = {
+		a : 4,
+		e : 3,
+		i : 1,
+		o : 0,
+		s : 5
+	}
+	let toBeReplaced = new RegExp(`[${Object.keys(replaceChars).join('')}]`, 'g')
+	return str.replace(toBeReplaced, match => replaceChars[match])
+}
+// console.log('hackerSpeak=>j4v45cr1pt 15 c00l: ', hackerSpeak('javascript is cool'))
+
+/**Function Factory */
+const makePlusFunction = baseNum => addNum => baseNum + addNum
+// function makePlusFunction(baseNum) {
+// 	return function(addNum) {
+// 		return baseNum + addNum
+// 	}
+// }
+const plusFive = makePlusFunction(5)
+// console.log('plusFive', plusFive(2))
+// console.log(makePlusFunction(3)(2));
