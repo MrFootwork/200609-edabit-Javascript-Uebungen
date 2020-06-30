@@ -143,5 +143,15 @@ const hackerSpeak = str => {
 	let toBeReplaced = new RegExp(`[${Object.keys(replaceChars).join('')}]`, 'g')
 	return str.replace(toBeReplaced, match => replaceChars[match])
 }
+// console.log('hackerSpeak=>j4v45cr1pt 15 c00l: ', hackerSpeak('javascript is cool'))
 
-console.log('hackerSpeak=>j4v45cr1pt 15 c00l: ', hackerSpeak('javascript is cool'))
+/**Function Factory */
+const makePlusFunction = baseNum => addNum => baseNum + addNum
+// function makePlusFunction(baseNum) {
+// 	return function(addNum) {
+// 		return baseNum + addNum
+// 	}
+// }
+const plusFive = makePlusFunction(5)
+// console.log('plusFive', plusFive(2))
+// console.log(makePlusFunction(3)(2));
