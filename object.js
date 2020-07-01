@@ -80,3 +80,44 @@ const greeting = name =>
 		: `Hi! I'm ${name}, and I'm from ${GUEST_LIST[name]}.`
 // console.log('greeting', greeting('Randy'))
 // console.log('greeting', greeting('Monti'))
+
+/**[Color Conversion] RGB to HEX and HEX to RGB */
+const colorConversion = input => {
+	// let output = 0
+	// switch (typeof input) {
+	// 	case 'string': //HEX => RGB
+	// 		if (input[0] === '#' && input.length <= 7) {
+	// 			output = { r: 0, g: 0, b: 0 }
+	// 			let i = 0
+	// 			for (const color in output) {
+	// 				output[color] = parseInt(input[2 * i + 1] + input[2 * i + 2], 16)
+	// 				i++
+	// 			}
+	// 			return output
+	// 		}
+
+	// 	case 'object': //RGB => HEX
+	// 		if (Object.values(input).every(v => 0 <= v && v <= 255)) {
+	// 			output = [ 0, 1, 2 ]
+	// 			let toHEX = color => Object.values(input)[color].toString(16)
+	// 			output = output.map(color => (toHEX(color) < 10 ? `0${toHEX(color)}` : toHEX(color)))
+	// 			output.unshift('#')
+	// 			return output.join('')
+	// 		}
+	// }
+	// return 'Not valid input'
+
+	if (typeof input === 'string') {
+		if (!/^#[0-9a-f]{6}$/.test(input)) return 'Not valid input'
+		const [ r, g, b ] = input.match(/[0-9a-f]{2}/g).map(h => parseInt(h, 16))
+		return { r, g, b }
+	}
+	else {
+		const colors = Object.values(input)
+		if (colors.some(c => c < 0 || 255 < c)) return 'Not valid input'
+		return '#' + colors.map(c => c.toString(16).padStart(2, '0')).join('')
+	}
+}
+// console.log(colorConversion('#ffffff'))
+// console.log(colorConversion('#050106'))
+// console.log(colorConversion({ r: 9, g: 200, b: 125 }))
