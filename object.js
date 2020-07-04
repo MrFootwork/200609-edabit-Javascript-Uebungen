@@ -223,3 +223,64 @@ const getXP = (obj) => `${Object.values(obj).reduce((sum, v, i) => (sum += v * [
 // 		'Very Hard' : 1,
 // 	})
 // )
+
+/** Check If objOne Is Equal to objTwo*/
+const isEqual = (a, b) => JSON.stringify(a) === JSON.stringify(b)
+console.log(
+	'#6 true=>',
+	isEqual(
+		{
+			foo : {
+				bar : {
+					baz : 'edabit.com',
+				},
+				baz : {
+					userIds : {
+						jason : 76397,
+						steve : 73073,
+						joe   : 21076,
+					},
+				},
+			},
+		},
+		{
+			foo : {
+				baz : {
+					userIds : {
+						jason : 76397,
+						steve : 73073,
+						joe   : 21076,
+					},
+				},
+				bar : {
+					baz : 'edabit.com',
+				},
+			},
+		}
+	)
+)
+console.log(
+	'#4 false=>',
+	isEqual(
+		{
+			foo : {
+				bar : {
+					baz : true,
+				},
+				baz : {
+					arr : [ 1, 2, 3 ],
+				},
+			},
+		},
+		{
+			foo : {
+				bar : {
+					baz : true,
+				},
+				baz : {
+					arr : [ 3, 2, 1 ],
+				},
+			},
+		}
+	)
+)
