@@ -110,8 +110,7 @@ const colorConversion = (input) => {
 		if (!/^#[0-9a-f]{6}$/.test(input)) return 'Not valid input'
 		const [ r, g, b ] = input.match(/[0-9a-f]{2}/g).map((h) => parseInt(h, 16))
 		return { r, g, b }
-	}
-	else {
+	} else {
 		//RGB => HEX
 		const colors = Object.values(input)
 		if (colors.some((c) => c < 0 || 255 < c)) return 'Not valid input'
@@ -224,63 +223,46 @@ const getXP = (obj) => `${Object.values(obj).reduce((sum, v, i) => (sum += v * [
 // 	})
 // )
 
-/** Check If objOne Is Equal to objTwo*/
-const isEqual = (a, b) => JSON.stringify(a) === JSON.stringify(b)
-console.log(
-	'#6 true=>',
-	isEqual(
-		{
-			foo : {
-				bar : {
-					baz : 'edabit.com',
-				},
-				baz : {
-					userIds : {
-						jason : 76397,
-						steve : 73073,
-						joe   : 21076,
-					},
-				},
-			},
-		},
-		{
-			foo : {
-				baz : {
-					userIds : {
-						jason : 76397,
-						steve : 73073,
-						joe   : 21076,
-					},
-				},
-				bar : {
-					baz : 'edabit.com',
-				},
-			},
-		}
-	)
-)
-console.log(
-	'#4 false=>',
-	isEqual(
-		{
-			foo : {
-				bar : {
-					baz : true,
-				},
-				baz : {
-					arr : [ 1, 2, 3 ],
-				},
-			},
-		},
-		{
-			foo : {
-				bar : {
-					baz : true,
-				},
-				baz : {
-					arr : [ 3, 2, 1 ],
-				},
-			},
-		}
-	)
-)
+/**Is it an Object? */
+const isObject = (value) => value instanceof Object
+// console.log('isObject', isObject((add = (x, y) => x + y)))
+// console.log('isObject', isObject(new Regex('^[a-zA-Z0-9]+$', 'g')))
+// console.log('isObject', isObject(''))
+
+/**Planetary Weight Converter */
+const planetGrav = {
+	Mercury : 3.7,
+	Venus   : 8.87,
+	Earth   : 9.81,
+	Mars    : 3.711,
+	Jupiter : 24.79,
+	Saturn  : 10.44,
+	Uranus  : 8.69,
+	Neptune : 11.15,
+}
+const spaceWeights = (planetA, weight, planetB) => +(weight * planetGrav[planetB] / planetGrav[planetA]).toFixed(2)
+// console.log('0.38 => ', spaceWeights('Earth', 1, 'Mars'))
+// console.log('2.53 => ', spaceWeights('Earth', 1, 'Jupiter'))
+// console.log('1.14 => ', spaceWeights('Earth', 1, 'Neptune'))
+
+/**Leaderboard Sort */
+
+const leaderboards = (users) =>
+	users.sort((a, b) => ((trueScore = (u) => u.score + 2 * u.reputation), trueScore(b) - trueScore(a)))
+// console.log(
+// 	'leaderboards',
+// 	leaderboards([
+// 		{ name: 'a', score: 100, reputation: 20 },
+// 		{ name: 'b', score: 90, reputation: 40 },
+// 		{ name: 'c', score: 115, reputation: 30 },
+// 	])
+// )
+
+/**Paint the Walls */
+const time = (obj, people, wall) => obj.minutes * obj.people / obj.walls * wall / people
+let rate = {
+	people  : 10,
+	walls   : 10,
+	minutes : 22,
+}
+console.log('time', time(rate, 14, 14))
