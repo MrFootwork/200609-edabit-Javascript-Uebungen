@@ -10,11 +10,11 @@ const owofied = (sentence) =>
 //const isLastCharacterN = w => w[w.length - 1] === "n";
 //const isLastCharacterN = word => [...word].pop() == "n";
 const isLastCharacterN = (word) => /n$/.test(word)
-//console.log(isLastCharacterN("fishn"));
+// console.log(isLastCharacterN("fishn"));
 
 /**Check String for Spaces */
 const hasSpaces = (str) => /\s/g.test(str)
-//console.log("hasSpaces: ", hasSpaces("hello, world"));
+// console.log("hasSpaces: ", hasSpaces("hello, world"));
 
 /** Letters Only*/
 const lettersOnly = (str) => str.replace(/[^a-z]/gi, '')
@@ -34,6 +34,7 @@ const removeVowels = (str) => str.replace(/[aeiouAEIOU]/g, '')
 
 /**How Many Vowels? */
 const countVowels = (str) => str.match(/[aeiouAEIOU]/g).length
+// console.log("countVowels", countVowels("Hello World!"))
 
 /**Create a Phone Number */
 const createPhoneNumber = (numbers) => `(xxx) xxx-xxxx`.replace(/x/g, (numberInsert) => numbers.shift())
