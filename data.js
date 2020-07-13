@@ -31,3 +31,33 @@ const risiko = (att, def) => {
 }
 // console.log('3: ', risiko([ 3, 6, 4 ], [ 2, 5, 3 ]))
 // console.log('0: ', risiko([ 3, 6 ], [ 6, 4, 4 ]))
+
+const sumFractions = arr => Math.round(arr.reduce((sum, fr) => sum + fr[0] / fr[1], 0))
+// console.log('2: ', sumFractions([ [ 18, 13 ], [ 4, 5 ] ]))
+
+const hemisphereSeason = (hemisphere, date) => {
+	// return [ 'Spring', 'Summer', 'Autumn', 'Winter' ][
+	// 	(((new Date(date).getMonth() + (hemisphere === 'N' ? 10 : 16)) / 3) | 0) % 4
+	// ]
+	date = new Date(date).getMonth()
+	let order = [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0, 1 ],
+		seasons = {
+			N : [ 'Spring', 'Summer', 'Autumn', 'Winter' ],
+			S : [ 'Autumn', 'Winter', 'Spring', 'Summer' ],
+		}
+	return seasons[hemisphere][Math.floor(order.indexOf(date) / 3)]
+}
+// console.log('Summer: ', hemisphereSeason('S', 'January, 2'))
+// console.log('Summer: ', hemisphereSeason('N', 'June, 30'))
+
+const oldest = people => Object.keys(people).reduce((a, b) => (people[a] >= people[b] ? a : b))
+// console.log('oldest -> ', oldest({ Emma: 71, Jack: 45, Amy: 15, Ben: 29 }))
+
+const minRemovals = (str1, str2) => {
+	str2 = str2.split('')
+	return str1.split('').reduce((count, char) => {})
+	// return str2
+}
+console.log('2: ', minRemovals('abcde', 'cab'))
+console.log('2: ', minRemovals('deafk', 'kfeap'))
+console.log('6: ', minRemovals('acb', 'ghi'))

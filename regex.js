@@ -34,7 +34,7 @@ const removeVowels = (str) => str.replace(/[aeiouAEIOU]/g, '')
 
 /**How Many Vowels? */
 const countVowels = (str) => str.match(/[aeiouAEIOU]/g).length
-// console.log("countVowels", countVowels("Hello World!"))
+console.log("countVowels", countVowels("Hello World!"))
 
 /**Create a Phone Number */
 const createPhoneNumber = (numbers) => `(xxx) xxx-xxxx`.replace(/x/g, (numberInsert) => numbers.shift())
@@ -132,3 +132,9 @@ const rootDigit = (n) => {
 // console.log('rootDigit', rootDigit(123))
 // console.log('rootDigit', rootDigit(999888777))
 
+/**war zu schwer: nicht geschafft */
+const removeLeadingTrailing = (n) => +((n.match(/[1-9]\d*|(?=\.)\.\d*[1-9]/g)||[]).join(''))
+// console.log(removeLeadingTrailing("230.000"))
+// console.log(removeLeadingTrailing("00402"))
+// console.log(removeLeadingTrailing("03.1400"))
+// console.log(removeLeadingTrailing("30"))
