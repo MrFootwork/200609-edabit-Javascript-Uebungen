@@ -1,5 +1,5 @@
 /**Get Sum of People's Budget */
-const getBudgets = (arr) => arr.reduce((total, person) => total + person.budget, 0)
+const getBudgets = arr => arr.reduce((total, person) => total + person.budget, 0)
 
 /* console.log(getBudgets([
   { name: "John", age: 21, budget: 23000 },
@@ -16,7 +16,7 @@ const findOccurrences = (str, char) => {
 			(o, k) => ({
 				...o,
 				[k] : [ ...k ] //assigning the object elements
-					.filter((v) => v === char.toLowerCase()).length,
+					.filter(v => v === char.toLowerCase()).length,
 			}),
 			{}
 		)
@@ -27,7 +27,7 @@ const findOccurrences_2 = (str, char) => {
 		(o, key) =>
 			Object.assign(o, {
 				//assigning the object elements
-				[key] : [ ...key ].filter((v) => v === char.toLowerCase()).length,
+				[key] : [ ...key ].filter(v => v === char.toLowerCase()).length,
 			}),
 		{}
 	)
@@ -36,10 +36,10 @@ const findOccurrences_2 = (str, char) => {
 const findOccurrences_3 = (str, char) => {
 	let words = str.toLowerCase().match(/\S+/g)
 	let object = Object.fromEntries(
-		words.map((word) => [
+		words.map(word => [
 			//ECMAscript2019 Object.fromEntries()
 			word,
-			[ ...word ].filter((v) => v === char.toLowerCase()).length,
+			[ ...word ].filter(v => v === char.toLowerCase()).length,
 		])
 	)
 	return object
@@ -74,13 +74,13 @@ const GUEST_LIST = {
 	Norman : 'England',
 	Sam    : 'Argentina',
 }
-const greeting = (name) =>
+const greeting = name =>
 	!GUEST_LIST.hasOwnProperty(name) ? "Hi! I'm a guest." : `Hi! I'm ${name}, and I'm from ${GUEST_LIST[name]}.`
 // console.log('greeting', greeting('Randy'))
 // console.log('greeting', greeting('Monti'))
 
 /**[Color Conversion] RGB to HEX and HEX to RGB */
-const colorConversion = (input) => {
+const colorConversion = input => {
 	// let output = 0
 	// switch (typeof input) {
 	// 	case 'string': //HEX => RGB
@@ -108,13 +108,13 @@ const colorConversion = (input) => {
 	if (typeof input === 'string') {
 		//HEX => RGB
 		if (!/^#[0-9a-f]{6}$/.test(input)) return 'Not valid input'
-		const [ r, g, b ] = input.match(/[0-9a-f]{2}/g).map((h) => parseInt(h, 16))
+		const [ r, g, b ] = input.match(/[0-9a-f]{2}/g).map(h => parseInt(h, 16))
 		return { r, g, b }
 	} else {
 		//RGB => HEX
 		const colors = Object.values(input)
-		if (colors.some((c) => c < 0 || 255 < c)) return 'Not valid input'
-		return '#' + colors.map((c) => c.toString(16).padStart(2, '0')).join('')
+		if (colors.some(c => c < 0 || 255 < c)) return 'Not valid input'
+		return '#' + colors.map(c => c.toString(16).padStart(2, '0')).join('')
 	}
 }
 // console.log(colorConversion('#ffffff'))
@@ -122,7 +122,7 @@ const colorConversion = (input) => {
 // console.log(colorConversion({ r: 9, g: 200, b: 125 }))
 
 /**Remove Repeated Letters*/
-const unrepeated = (str) => [ ...new Set(str) ].join('')
+const unrepeated = str => [ ...new Set(str) ].join('')
 // console.log('unrepeated', unrepeated('altwaff test'))
 // console.log('unrepeated', unrepeated('hello'))
 // console.log('unrepeated', unrepeated('WWE!!!'))
@@ -188,13 +188,13 @@ for (const { name } of users) {
 // console.log(names)
 
 /** Online Shopping*/
-const freeShipping = (order) => Object.values(order).reduce((total, item) => (total += item)) >= 50
+const freeShipping = order => Object.values(order).reduce((total, item) => (total += item)) >= 50
 // console.log('freeShipping', freeShipping({ Shampoo: 5.99, 'Rubber Ducks': 15.99 }))
 // console.log('freeShipping', freeShipping({ Monopoly: 11.99, 'Secret Hitler': 35.99, Bananagrams: 13.99 }))
 
 /**Lowercase and Uppercase Map */
 
-const mapping = (letters) => {
+const mapping = letters => {
 	// let result = {}
 	// for (const letter in letters) {
 	//   Object.assign(result, { [letters[letter]]: letters[letter].toUpperCase() })
@@ -207,11 +207,11 @@ const mapping = (letters) => {
 /**Verkettung von Ausdrücken innerhalb eines Callbacks
  * Das letzte Argument ist das return-Argument
  */
-const test = (zahlen) => zahlen.reduce((a, b) => ((a = a + b), a), 0)
+const test = zahlen => zahlen.reduce((a, b) => ((a = a + b), a), 0)
 // console.log(test([1, 2, 3]))
 
 /**Edabit Experience Points */
-const getXP = (obj) => `${Object.values(obj).reduce((sum, v, i) => (sum += v * [ 5, 10, 20, 40, 80 ][i]), 0)}XP`
+const getXP = obj => `${Object.values(obj).reduce((sum, v, i) => (sum += v * [ 5, 10, 20, 40, 80 ][i]), 0)}XP`
 // console.log(
 // 	'2055XP',
 // 	getXP({
@@ -224,7 +224,7 @@ const getXP = (obj) => `${Object.values(obj).reduce((sum, v, i) => (sum += v * [
 // )
 
 /**Is it an Object? */
-const isObject = (value) => value instanceof Object
+const isObject = value => value instanceof Object
 // console.log('isObject', isObject((add = (x, y) => x + y)))
 // console.log('isObject', isObject(new Regex('^[a-zA-Z0-9]+$', 'g')))
 // console.log('isObject', isObject(''))
@@ -247,8 +247,8 @@ const spaceWeights = (planetA, weight, planetB) => +(weight * planetGrav[planetB
 
 /**Leaderboard Sort */
 
-const leaderboards = (users) =>
-	users.sort((a, b) => ((trueScore = (u) => u.score + 2 * u.reputation), trueScore(b) - trueScore(a)))
+const leaderboards = users =>
+	users.sort((a, b) => ((trueScore = u => u.score + 2 * u.reputation), trueScore(b) - trueScore(a)))
 // console.log(
 // 	'leaderboards',
 // 	leaderboards([
@@ -265,4 +265,9 @@ let rate = {
 	walls   : 10,
 	minutes : 22,
 }
-console.log('time', time(rate, 14, 14))
+// console.log('time', time(rate, 14, 14))
+
+let drinks = [ { name: 'lemonade', price: 50 }, { name: 'lime', price: 10 } ]
+/**Drink Sorting */
+const sortDrinkByPrice = drinks => drinks.sort((a, b) => a.price - b.price)
+// console.log('', sortDrinkByPrice(drinks))
