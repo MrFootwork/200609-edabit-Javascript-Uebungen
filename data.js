@@ -54,10 +54,37 @@ const oldest = people => Object.keys(people).reduce((a, b) => (people[a] >= peop
 // console.log('oldest -> ', oldest({ Emma: 71, Jack: 45, Amy: 15, Ben: 29 }))
 
 const minRemovals = (str1, str2) => {
-	str2 = str2.split('')
-	return str1.split('').reduce((count, char) => {})
-	// return str2
+	let unique1 = [ ...str1 ].filter(char => !str2.includes(char))
+	let unique2 = [ ...str2 ].filter(char => !str1.includes(char))
+	return unique1.push(...unique2)
 }
-console.log('2: ', minRemovals('abcde', 'cab'))
-console.log('2: ', minRemovals('deafk', 'kfeap'))
-console.log('6: ', minRemovals('acb', 'ghi'))
+// console.log('2: ', minRemovals('abcde', 'cab'))
+// console.log('2: ', minRemovals('deafk', 'kfeap'))
+// console.log('6: ', minRemovals('acb', 'ghi'))
+
+/**Stems and Leaves */
+const stemPlot = arr => {
+	//stem of each element in arr [11, 1, 0]
+	const stems = arr.map(stem => {
+		let stemS = stem.toString()
+		return (stemS.length >= 2) * stemS.substring(0, stemS.length - 1)
+	})
+
+	//leaf of each element in arr [1, 1, 1]
+	const leafs = arr.map(leaf => +leaf.toString().slice(-1))
+
+	//solution as an object {0:[1], 1:[1], 11:[1]}
+	let obj = {}
+	stems.forEach(stem => (obj[stem] = []))
+	leafs.forEach((leaf, i) => obj[stems[i]].push(leaf))
+
+	//solution formatting
+	let array = []
+	for (const stem in obj) {
+		array.push(`${stem} | ${obj[stem].sort().join(' ')}`)
+	}
+	return array
+}
+// console.log('', stemPlot([ 111, 11, 1 ]))
+// console.log('', stemPlot([ 22, 22, 38, 22, 19 ]))
+// console.log('', stemPlot([ 4, 8, 75 ]))
