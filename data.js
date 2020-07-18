@@ -88,3 +88,7 @@ const stemPlot = arr => {
 // console.log('', stemPlot([ 111, 11, 1 ]))
 // console.log('', stemPlot([ 22, 22, 38, 22, 19 ]))
 // console.log('', stemPlot([ 4, 8, 75 ]))
+
+/**True Ones, False Zeros*/
+const integerBoolean = n => [ ...n ].map(num => num == 1)
+console.log('', integerBoolean('100101'))
