@@ -99,6 +99,106 @@ user2.newSolvedChallenge(challenge5)
 user2.newSolvedChallenge(challenge3)
 user2.newSolvedChallenge(challenge2)
 
-console.log(user1)
-console.log(user2)
-console.log(challenge6.points)
+// console.log(user1)
+// console.log(user2)
+// console.log(challenge6.points)
+
+/**Write a Simple Console Object */
+class Console {
+	constructor() {
+		this.historyList = []
+	}
+	log(...args) {
+		const result = args.reduce(
+			(str, arg) => (typeof arg === 'object' ? `${str}${JSON.stringify(arg)}` : `${str}${arg}`),
+			''
+		)
+		this.historyList.push(result)
+		return result
+	}
+	history([ min, max ] = []) {
+		min = Math.max(1, min)
+		return this.historyList.slice(min - 1, Math.max(min, max) || this.historyList.length).join('\n')
+	}
+	clearHistory() {
+		this.historyList = []
+		return true
+	}
+}
+// https://edabit.com/challenge/o7fs6wQvjfu9iZE2j
+// const myConsole = new Console()
+// myConsole.log('hi')
+// myConsole.log({ myObjectIsHere: true })
+// myConsole.log(function() {
+// 	return 'hello challengers'
+// })
+// console.log(myConsole)
+// console.log(myConsole.log('test'))
+// console.log(myConsole)
+// console.log(myConsole.history())
+// console.log(myConsole.log.toString())
+
+/** SimpleCrypt*/
+function SimpleCrypt(str) {
+	this.raw = str
+	this.cur = str
+}
+SimpleCrypt.prototype.encrypt = function(str = this.cur) {
+	this.cur = [ ...str ]
+		.map((v, i) => String.fromCharCode(v.charCodeAt(0) + (i + 1)))
+		.join('')
+		.replace(/\s/g, ' ')
+	return this.cur
+}
+SimpleCrypt.prototype.decrypt = function(str = this.cur) {
+	this.cur = [ ...str ]
+		.map((v, i) => String.fromCharCode(v.charCodeAt(0) - (i + 1)))
+		.join('')
+		.replace(/\s/g, ' ')
+	return this.cur
+}
+SimpleCrypt.prototype.reset = function() {
+	this.cur = this.raw
+}
+const myExample = new SimpleCrypt('123456')
+// console.log(myExample)
+// console.log(myExample.encrypt())
+// console.log(myExample)
+// console.log(myExample.decrypt())
+// console.log(myExample)
+// console.log(myExample.encrypt())
+// console.log(myExample)
+// console.log(myExample.reset())
+// console.log(myExample)
+
+/**Shiritori Game */
+class Shiritori {
+	constructor() {
+		this.words = []
+		this.game_over = false
+	}
+	play(str) {
+		if (this.words != 0 && (this.words.slice(-1)[0].slice(-1) != str[0] || this.words.includes(str))) {
+			this.game_over = true
+			return 'game over'
+		}
+		this.words.push(str)
+		return this.words
+	}
+	restart() {
+		this.words = []
+		this.game_over = false
+		return 'game restarted'
+	}
+}
+let my_shiritori = new Shiritori()
+// console.log(my_shiritori)
+// console.log(my_shiritori.words)
+// console.log(my_shiritori.play('hallo'))
+// console.log(my_shiritori)
+// console.log(my_shiritori.play('oh'))
+// console.log(my_shiritori)
+// console.log(my_shiritori.play('hallo'))
+// console.log(my_shiritori)
+// console.log(my_shiritori.restart())
+// console.log(my_shiritori)
