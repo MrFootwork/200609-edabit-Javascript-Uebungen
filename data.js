@@ -91,4 +91,24 @@ const stemPlot = arr => {
 
 /**True Ones, False Zeros*/
 const integerBoolean = n => [ ...n ].map(num => num == 1)
-console.log('', integerBoolean('100101'))
+// console.log('', integerBoolean('100101'))
+
+/**Delete Occurrences of Extra Elements in an Array */
+deleteOccurrences = (arr, num, count = {}) => arr.filter(v => (count[v] >= num ? 0 : (count[v] = ++count[v] || 1)))
+// console.log(deleteOccurrences([ 1, 1, 1, 1 ], 2))
+// console.log(deleteOccurrences([ 13, true, 13, null ], 1))
+// console.log(deleteOccurrences([ true, true, true ], 3))
+
+/**Pricey Products */
+const products = r => Object.keys(r).sort((a, b) => r[b] - r[a]).filter(product => r[product] >= 500)
+// console.log(products({ Computer: 600, TV: 800, Radio: 50 }))
+
+/**The Array Twins */
+function twins(arr) {
+	let sum = (a, b) => a + b
+	for (i in arr) {
+		if (arr.slice(0, i).reduce(sum, 0) == arr.slice(i).reduce(sum, 0)) return i
+	}
+	return "That doesn't exist."
+}
+console.log(twins([ 10, 1, 2, 3, 5, 5 ]))
