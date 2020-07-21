@@ -105,10 +105,10 @@ const products = r => Object.keys(r).sort((a, b) => r[b] - r[a]).filter(product 
 
 /**The Array Twins */
 function twins(arr) {
-	let sum = (a, b) => a + b
+	const sum = (a, b) => a + b
 	for (i in arr) {
 		if (arr.slice(0, i).reduce(sum, 0) == arr.slice(i).reduce(sum, 0)) return i
 	}
-	return "That doesn't exist."
+	return 0
 }
-console.log(twins([ 10, 1, 2, 3, 5, 5 ]))
+// console.log(twins([ 10, 1, 2, 3, 5, 5 ]))
