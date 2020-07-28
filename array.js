@@ -282,3 +282,18 @@ const sweetestIcecream = arr => {
 const isSpecialArray = arr => arr.every((v, i) => v % 2 == i % 2)
 // console.log('', isSpecialArray([ 2, 7, 5, 9, 6, 1, 6, 3 ]))
 // console.log('', isSpecialArray([ 2, 7, 4, 9, 6, 1, 6, 3 ]))
+
+/**Alternate Sort */
+function alternateSort(arr) {
+	const letters = arr
+		.filter(str => typeof str == 'string')
+		.sort((a, b) => (b.toLowerCase() < a.toLowerCase() ? 1 : -1))
+	const numbers = arr //
+		.filter(num => typeof num == 'number')
+		.sort((a, b) => a - b)
+	let result = []
+	arr.forEach((_, i) => (!(i % 2) ? result.push(numbers[i / 2]) : result.push(letters[i / 2 - 0.5])))
+	return result
+}
+// console.log(alternateSort([ 'a', 'c', 'b', 1, 2, 3 ]))
+// console.log(alternateSort([ -2, 'F', 'a', 0, 100, 'z' ]))

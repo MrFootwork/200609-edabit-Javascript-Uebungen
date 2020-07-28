@@ -242,3 +242,26 @@ const sayHelloBye = (name, num) => `${[ 'Bye', 'Hello' ][num]} ${name[0].toUpper
 const isStrangePair = (str1, str2) => str1.endsWith(str2[0]) && str2.endsWith(str1[0])
 // console.log('', isStrangePair('ratio', 'orator'))
 // console.log('', isStrangePair('bush', 'hubris'))
+
+/**Unfair Hurdles */
+function isUnfairHurdle(hurdles) {
+	return hurdles.length >= 4 || hurdles[0].indexOf('#', 1) - 1 < 4
+}
+// console.log(
+// 	'false',
+// 	isUnfairHurdle([
+// 		'#    #    #', //
+// 		'#    #    #',
+// 		'#    #    #',
+// 	])
+// )
+
+/**Reverse the Case */
+function reverseCase(str) {
+	return [ ...str ]
+		.map(
+			char => (char.toLowerCase() == char ? char.toUpperCase() : char.toLowerCase()) //
+		)
+		.join('')
+}
+console.log(reverseCase('Happy Birthday'))
