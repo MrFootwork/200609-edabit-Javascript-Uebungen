@@ -123,5 +123,11 @@ function mean(num) {
 function isOrthogonal(arr1, arr2) {
 	return arr1.reduce((acc, _, i) => acc + arr1[i] * arr2[i], 0) == 0
 }
-console.log(isOrthogonal([ 1, 2 ], [ 2, -1 ]))
-console.log(isOrthogonal([ 1, 2, 0 ], [ 2, -1, 10 ]))
+// console.log(isOrthogonal([ 1, 2 ], [ 2, -1 ]))
+// console.log(isOrthogonal([ 1, 2, 0 ], [ 2, -1, 10 ]))
+
+/**Instant JAZZ */
+function jazzify(arr) {
+	return arr.map(chord => (chord.endsWith(7) ? chord : chord + 7))
+}
+// console.log(jazzify([ 'F', 'E7', 'A7', 'Ab', 'Gm7', 'C7' ]))

@@ -67,8 +67,7 @@ function doSomething(isGoingToResolve = true) {
 	return new Promise((resolve, reject) => {
 		if (isGoingToResolve) {
 			resolve('something')
-		}
-		else {
+		} else {
 			reject('something else')
 		}
 	})
@@ -98,7 +97,7 @@ var resultIX = ''
 var thenable = {
 	then : function(onFulfill, onReject) {
 		onFulfill('edabit!')
-	}
+	},
 }
 var promise = Promise.resolve(thenable).then(passed => (resultIX = passed))
 
@@ -138,7 +137,7 @@ const hackerSpeak = str => {
 		e : 3,
 		i : 1,
 		o : 0,
-		s : 5
+		s : 5,
 	}
 	let toBeReplaced = new RegExp(`[${Object.keys(replaceChars).join('')}]`, 'g')
 	return str.replace(toBeReplaced, match => replaceChars[match])
@@ -155,3 +154,16 @@ const makePlusFunction = baseNum => addNum => baseNum + addNum
 const plusFive = makePlusFunction(5)
 // console.log('plusFive', plusFive(2))
 // console.log(makePlusFunction(3)(2));
+
+/**All About Anonymous Functions: Adding Suffixes */
+function add_suffix(suffix) {
+	return function(something) {
+		return something + suffix
+	}
+}
+// add_ly = add_suffix('ly')
+// console.log(add_ly('hopeless'))
+// console.log(add_ly('total'))
+// add_less = add_suffix('less')
+// console.log(add_less('fear'))
+// console.log(add_less('ruth'))
