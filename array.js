@@ -297,3 +297,12 @@ function alternateSort(arr) {
 }
 // console.log(alternateSort([ 'a', 'c', 'b', 1, 2, 3 ]))
 // console.log(alternateSort([ -2, 'F', 'a', 0, 100, 'z' ]))
+
+/**Total Volume */
+function totalVolume(...boxes) {
+	return boxes.reduce((total, [ l, w, h ]) => total + l * w * h, 0)
+	return boxes
+		.map(box => box.reduce((boxVolume, edge) => boxVolume * edge, 1))
+		.reduce((totalVolume, boxVolume) => totalVolume + boxVolume, 0)
+}
+console.log(totalVolume([ 4, 2, 4 ], [ 3, 3, 3 ], [ 1, 1, 2 ], [ 2, 1, 1 ]))
