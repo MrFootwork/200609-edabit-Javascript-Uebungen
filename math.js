@@ -131,3 +131,32 @@ function jazzify(arr) {
 	return arr.map(chord => (chord.endsWith(7) ? chord : chord + 7))
 }
 // console.log(jazzify([ 'F', 'E7', 'A7', 'Ab', 'Gm7', 'C7' ]))
+
+function sumDigProd(...nums) {
+	let sum = [ ...nums ].reduce((sum, num) => sum + num, 0) //sum as number
+	arrayfy = sum => [ ...('' + sum) ].map(digit => +digit) //array with digits
+	sum = arrayfy(sum)
+	while (sum.length > 1) {
+		sum = sum.reduce((product, digit) => product * digit, 1)
+		sum = arrayfy(sum)
+	}
+	return sum[0]
+}
+// console.log(sumDigProd(16, 28))
+// console.log(sumDigProd(1, 2, 3, 4, 5, 6))
+
+function isPowerful(num) {
+	let remainder = num
+	let factors = []
+
+	for (i = 2; i <= remainder; i++) {
+		while (remainder % i === 0) {
+			factors.push(i)
+			remainder /= i
+		}
+	}
+	factors = [ ...new Set(factors) ]
+
+	return factors.every(factor => num % factor ** 2 == 0)
+}
+// console.log(isPowerful(674))

@@ -305,4 +305,14 @@ function totalVolume(...boxes) {
 		.map(box => box.reduce((boxVolume, edge) => boxVolume * edge, 1))
 		.reduce((totalVolume, boxVolume) => totalVolume + boxVolume, 0)
 }
-console.log(totalVolume([ 4, 2, 4 ], [ 3, 3, 3 ], [ 1, 1, 2 ], [ 2, 1, 1 ]))
+// console.log(totalVolume([ 4, 2, 4 ], [ 3, 3, 3 ], [ 1, 1, 2 ], [ 2, 1, 1 ]))
+
+function adjacentProduct(a) {
+	// return Math.max(...arr.slice(1).map((num, i) => num * arr[i]))
+	return (
+		a.sort((x, y) => {
+			a = a > x * y ? a : x * y
+		}) | a
+	)
+}
+// console.log(adjacentProduct([ -23, 4, -3, 8, -12 ]))

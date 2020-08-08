@@ -264,4 +264,20 @@ function reverseCase(str) {
 		)
 		.join('')
 }
-console.log(reverseCase('Happy Birthday'))
+// console.log(reverseCase('Happy Birthday'))
+
+/** Read The Abacus (Part 1: Russian Schoty)*/
+function schoty(frame) {
+	return +frame.map(wire => wire.indexOf('-')).join('')
+}
+// console.log(
+// 	schoty([
+// 		'---OOOOOOOOOO',
+// 		'---OOOOOOOOOO',
+// 		'---OOOOOOOOOO',
+// 		'OOO---OOOOOOO',
+// 		'O---OOOOOOOOO',
+// 		'OOOOOOOOO---O',
+// 		'OO---OOOOOOOO',
+// 	])
+// )
