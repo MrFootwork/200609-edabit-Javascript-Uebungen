@@ -271,3 +271,27 @@ let drinks = [ { name: 'lemonade', price: 50 }, { name: 'lime', price: 10 } ]
 /**Drink Sorting */
 const sortDrinkByPrice = drinks => drinks.sort((a, b) => a.price - b.price)
 // console.log('', sortDrinkByPrice(drinks))
+
+/**Get Student Top Notes*/
+function getStudentTopNotes(students) {
+	return students.map(student => Math.max(...student.notes, 0))
+}
+// console.log(
+// 	getStudentTopNotes([
+// 		{
+// 			id    : 1,
+// 			name  : 'Jacek',
+// 			notes : [ 5, 3, 4, 2, 5, 5 ],
+// 		},
+// 		{
+// 			id    : 2,
+// 			name  : 'Ewa',
+// 			notes : [ 2, 3, 3, 3, 2, 5 ],
+// 		},
+// 		{
+// 			id    : 3,
+// 			name  : 'Zygmunt',
+// 			notes : [ 2, 2, 4, 4, 3, 3 ],
+// 		},
+// 	])
+// )
