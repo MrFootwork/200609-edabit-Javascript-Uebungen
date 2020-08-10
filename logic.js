@@ -108,5 +108,12 @@ const intWithinBounds = (n, lower, upper) => n >= lower && n < upper && Number.i
 function everySome(test, type, ...values) {
 	return values[type.slice(0, -4)](value => eval(value + test))
 }
-console.log(everySome('>= 1', 'somebody', -1, -1, -1, -1, 1))
-console.log(everySome('< 4 / 2', 'everybody', 1, 2, 1, 2, 1, 0, -10))
+// console.log(everySome('>= 1', 'somebody', -1, -1, -1, -1, 1))
+// console.log(everySome('< 4 / 2', 'everybody', 1, 2, 1, 2, 1, 0, -10))
+
+/**Drinks Allowed? */
+function shouldServeDrinks(age, onBreak) {
+	return age >= 18 && !onBreak
+}
+// console.log(shouldServeDrinks(17, true))
+// console.log(shouldServeDrinks(19, false))
