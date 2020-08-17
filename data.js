@@ -130,3 +130,19 @@ function releaseYear(album) {
 // console.log(releaseYear('Honeymoon'))
 // console.log(releaseYear('fake'))
 // console.log(releaseYear('thank u next'))
+
+/**Histogram Function */
+function histogram(arr, char) {
+	return arr.map(rowLength => char.repeat(rowLength)).join('\n')
+}
+// console.log(histogram([ 1, 3, 4 ], '#'))
+
+/**Building a Pie Chart */
+function pieChart(data) {
+	let degreePerUnit = 360 / Object.values(data).reduce((sum, value) => sum + value, 0)
+	for (category in data) {
+		data[category] = +(data[category] * degreePerUnit).toFixed(1)
+	}
+	return data
+}
+// console.log(pieChart({ a: 8, b: 21, c: 12, d: 5, e: 4 }))
