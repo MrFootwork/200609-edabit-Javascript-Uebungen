@@ -38,15 +38,16 @@ const findOccurrences_3 = (str, char) => {
 	let object = Object.fromEntries(
 		words.map(word => [
 			//ECMAscript2019 Object.fromEntries()
+			//building an array of word - occurrence pairs
 			word,
-			[ ...word ].filter(v => v === char.toLowerCase()).length,
+			[ ...word ].filter(letter => letter === char.toLowerCase()).length,
 		])
 	)
 	return object
 }
-// console.log("findOccurrences", findOccurrences_3("Hello World", "o"));
-// console.log("findOccurrences", findOccurrences("Create a nice JUICY function", "c"));
-// console.log("findOccurrences", findOccurrences("An APPLE a day keeps an Archeologist AWAY...", "A"));
+// console.log('findOccurrences', findOccurrences_3('Hello World', 'o'))
+// console.log('findOccurrences', findOccurrences('Create a nice JUICY function', 'c'))
+// console.log('findOccurrences', findOccurrences_2('An APPLE a day keeps an Archeologist AWAY...', 'A'))
 
 /**Ageing the Population... */
 function afterNYears(names, n) {
