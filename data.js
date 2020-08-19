@@ -146,3 +146,47 @@ function pieChart(data) {
 	return data
 }
 // console.log(pieChart({ a: 8, b: 21, c: 12, d: 5, e: 4 }))
+
+/**Conveyor Belts, Warp Tunnels */
+function warpTunnel(mtx, n) {
+	for (let i = 0; i < n; i++) {
+		for (let j = 0; j < mtx.length; j++) {
+			mtx[j].unshift(mtx[(j || mtx.length) - 1].pop())
+		}
+	}
+	return mtx
+}
+// console.log(warpTunnel([ [ 1, 2, 3 ], [ 4, 5, 6 ], [ 7, 8, 9 ] ], 2))
+// console.log(warpTunnel([ [ 1, 2, 3 ], [ 4, 5, 6 ], [ 7, 8, 9 ] ], 9))
+
+/**Check Magic Square */
+function isMagicSquare(square) {
+	const magicalSum = square[0].reduce((rowSum, rowElement) => rowSum + rowElement, 0)
+	//all rows
+	if (square.some(row => row.reduce((rowSum, rowElement) => rowSum + rowElement, 0) != magicalSum)) return false
+	//all columns
+	for (let i = 0; i < square[0].length; i++) {
+		let columnSum = 0
+		for (let j = 0; j < square.length; j++) {
+			columnSum += square[j][i]
+		}
+		if (columnSum != magicalSum) return false
+	}
+	//the diagonals
+	let diagonalSum1 = 0
+	let diagonalSum2 = 0
+	for (let i = 0; i < square.length; i++) {
+		diagonalSum1 += square[i][i]
+		diagonalSum2 += square[i][square.length - 1 - i]
+	}
+	if (diagonalSum1 != magicalSum || diagonalSum2 != magicalSum) return false
+	return true
+}
+// console.log(isMagicSquare([ [ 8, 1, 6 ], [ 3, 5, 7 ], [ 4, 9, 2 ] ]))
+
+/**Unique Character Mapping */
+function characterMapping(str) {
+	return [ ...str ].map(key => [ ...new Set(str) ].indexOf(key))
+}
+// console.log(characterMapping('abcdd'))
+// console.log(characterMapping('babbcb'))
