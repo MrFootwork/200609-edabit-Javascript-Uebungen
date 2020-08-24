@@ -243,3 +243,48 @@ function split(str) {
 // console.log(split('((()))'))
 // console.log(split('((()))(())()()(()())'))
 // console.log(split('((())())(()(()()))'))
+
+/**Decimal Range Function */
+function drange(start, end = null, step = 1) {
+	if (end === null) [ start, end ] = [ 0, start ]
+
+	let range = []
+	for (let i = start; i < end; i += step) range.push(i)
+
+	const decimal = Math.max(...[ start, end, step ].map(x => `${x}`.length - `${x}`.indexOf('.') - 1))
+	return range.map(x => +x.toFixed(decimal))
+}
+// console.log(drange(1.2, 5.9, 0.45))
+// console.log(drange(10))
+// console.log(drange(1, 7, 1.2))
+
+/**Number to Google */
+function numToGoogle(arr) {
+	let translation = ''
+	for (arrayWord of arr) {
+		let instruction = '' + arrayWord
+		if (instruction.includes('9')) break
+		let word = ''
+		let letters = [ ...instruction.replace(/0.*/g, '') ].filter(
+			code => code == 1 || code == 2 || code == 3 || code == 4
+		)
+
+		for (letter of letters) word += [ 'g', 'o', 'l', 'e' ][letter - 1]
+
+		if (instruction.includes('5')) word = [ ...word ].map(letter => letter.toUpperCase()).join('')
+		if (instruction.includes('6')) word += '.'
+		if (instruction.includes('7')) word = word.replace(word[0], word[0].toUpperCase())
+		if (instruction.includes('8')) word = [ ...word ].reverse().join('')
+		if (instruction.includes('0')) word = word.repeat(+instruction.substring(instruction.search(/(?<=0)/g)))
+
+		translation += word
+	}
+	return translation
+}
+// console.log(numToGoogle([ '12213467' ]))
+// console.log(numToGoogle([ '12213467', '321' ]))
+// console.log(numToGoogle([ '15', '2502', '15', 345 ]))
+// console.log(numToGoogle([ 15, 202, 1, 3, 4 ]))
+// console.log(numToGoogle([ '12213467', '321', '122906' ]))
+// console.log(numToGoogle([ '122134678' ]))
+// console.log(numToGoogle([ '15345678' ]))
