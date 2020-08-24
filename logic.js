@@ -117,3 +117,20 @@ function shouldServeDrinks(age, onBreak) {
 }
 // console.log(shouldServeDrinks(17, true))
 // console.log(shouldServeDrinks(19, false))
+
+/**Track the Robot (Part 2) */
+const trackRobot = (...steps) =>
+	steps.reduce(
+		([ x, y ], dist, i) =>
+			({
+				0 : [ x, y + dist ],
+				1 : [ x + dist, y ],
+				2 : [ x, y - dist ],
+				3 : [ x - dist, y ],
+			}[i % 4]),
+		[ 0, 0 ]
+	)
+// console.log(trackRobot(20, 30, 10, 40))
+// console.log(trackRobot())
+// console.log(trackRobot(-10, 20, 10))
+// console.log(trackRobot(1, 2, 3, 4, 5, 6, 7, 8, 9, 10))

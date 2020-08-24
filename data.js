@@ -190,3 +190,56 @@ function characterMapping(str) {
 }
 // console.log(characterMapping('abcdd'))
 // console.log(characterMapping('babbcb'))
+
+//Object copy
+/**Find the Bug: Annual Price and Deposit Increasement */
+function migrateProduct(oldProduct) {
+	const newProduct = {
+		...oldProduct,
+		price      : oldProduct.price * 1.15,
+		containers : oldProduct.containers.map(container => ({
+			...container,
+			deposit : container.type === 'bottle' ? 0.2 : container.deposit,
+		})),
+	}
+	return { oldProduct, newProduct }
+}
+// console.log(
+// 	migrateProduct({
+// 		product    : 'Milk',
+// 		price      : 1.2,
+// 		containers : [
+// 			{ type: 'bottle', deposit: 0.15, liters: 1.5 },
+// 			{ type: 'can', deposit: 0.1, liters: 0.33 },
+// 			{ type: 'carton', deposit: null, liters: 1 },
+// 		],
+// 	})
+// )
+
+/**Postfix Notation */
+function postfix(E) {
+	while (isNaN(E)) E = E.replace(/(\d+) (\d+) (\D)/g, (_, l, r, o) => eval(l + o + r))
+	return +E
+}
+// console.log(postfix('2 2 +'))
+// console.log(postfix('2 3 * 1 - 5 /'))
+
+/**Parentheses Clusters */
+function split(str) {
+	const result = []
+	let clusterEnds = 0, //0 indicates the end of a cluster
+		cluster = ''
+	for (paranthesis of str) {
+		cluster += paranthesis
+		paranthesis === '(' ? clusterEnds++ : clusterEnds--
+		if (clusterEnds === 0 && cluster) {
+			result.push(cluster)
+			cluster = ''
+		}
+	}
+	return result
+}
+// console.log(split('()()()'))
+// console.log(split('((()))'))
+// console.log(split('((()))(())()()(()())'))
+// console.log(split('((())())(()(()()))'))
