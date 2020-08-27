@@ -316,3 +316,15 @@ function adjacentProduct(a) {
 	)
 }
 // console.log(adjacentProduct([ -23, 4, -3, 8, -12 ]))
+
+/**Number of Boomerangs */
+function countBoomerangs(arr) {
+	return arr.reduce((count, left, i) => count + (left == arr[i + 2] && left != arr[i + 1]), 0)
+	// let count = 0
+	// arr.forEach((left, i) => {
+	// 	if (left == arr[i + 2] && left != arr[i + 1]) count++
+	// })
+	// return count
+}
+// console.log(countBoomerangs([ 9, 5, 9, 5, 1, 1, 1 ]))
+// console.log(countBoomerangs([ 5, 6, 6, 7, 6, 3, 9 ]))

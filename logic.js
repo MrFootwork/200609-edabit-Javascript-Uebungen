@@ -39,6 +39,18 @@ console.log("FizzBuzz -> FizzBuzz", FizzBuzz(5));
 console.log("FizzBuzz -> FizzBuzz", FizzBuzz(15));
 console.log("FizzBuzz -> FizzBuzz", FizzBuzz(4)); */
 
+/**The Fizz Buzz Test */
+function fizzBuzz(number) {
+	let result = []
+	for (let i = 1; i <= number; i++) {
+		if (!(i % 3) || !(i % 5)) {
+			result.push('Fizz'.repeat(!(i % 3)) + 'Buzz'.repeat(!(i % 5)))
+		} else result.push(i)
+	}
+	return result
+}
+// console.log(fizzBuzz(30))
+
 /**The Farm Problem */
 const animals = (chickens, cows, pigs) =>
 	/* [chickens, cows, pigs]
@@ -134,3 +146,46 @@ const trackRobot = (...steps) =>
 // console.log(trackRobot())
 // console.log(trackRobot(-10, 20, 10))
 // console.log(trackRobot(1, 2, 3, 4, 5, 6, 7, 8, 9, 10))
+
+/**Check If the Brick Fits through the Hole */
+// (a,b,c) -- dimensions of the brick
+// (w,h) -- dimensions of the hole
+function doesBrickFit(a, b, c, w, h) {
+	const s = (a, b) => a - b
+	const brick = [ a, b, c ].sort(s)
+	const hole = [ w, h ].sort(s)
+	return brick[0] <= hole[0] && brick[1] <= hole[1]
+
+	return (
+		(a <= w && b <= h) ||
+		(b <= w && a <= h) ||
+		(b <= w && c <= h) ||
+		(c <= w && b <= h) ||
+		(a <= w && c <= h) ||
+		(c <= w && a <= h)
+	)
+}
+// console.log(doesBrickFit(1, 1, 1, 1, 1))
+// console.log(doesBrickFit(1, 2, 2, 1, 1))
+
+/**combinations */
+function combinations(...items) {
+	return items.reduce((product, item) => product * (item || 1), 1)
+}
+// console.log(combinations(1, 2, 3, 4, 5, 6))
+
+/**Factor Tractor */
+function primeFactorize(num) {
+	let factors = []
+	for (let i = 2; i <= num; i++) {
+		while (!(num % i)) {
+			factors.push(i)
+			num /= i
+		}
+	}
+	return factors
+}
+// console.log(primeFactorize(25))
+// console.log(primeFactorize(48))
+// console.log(primeFactorize(77))
+// console.log(primeFactorize(1))

@@ -281,3 +281,46 @@ function schoty(frame) {
 // 		'OO---OOOOOOOO',
 // 	])
 // )
+
+/**Neatly Formatted Math */
+function formatMath(expr) {
+	return `${expr} = ${eval(expr.replace('x', '*'))}`
+}
+// console.log(formatMath('3 + 4'))
+// console.log(formatMath('4 x 5'))
+
+/**Find First Character That Repeats */
+function firstRepeat(chars) {
+	return (repetition = chars.match(/(.).*\1/)) ? repetition[1] : '-1'
+
+	let letterCount = new Map()
+	let result = ''
+
+	for (letter of chars) letterCount.set(letter, [ ...chars ].filter(searchCount => searchCount == letter).length)
+
+	letterCount.forEach((count, letter) => {
+		if (count >= 2) result += letter
+	})
+
+	if (!result) return '-1'
+	else return result[0]
+}
+// console.log(firstRepeat('legolas'))
+// console.log(firstRepeat('Gandalf'))
+// console.log(firstRepeat('Isildur'))
+
+function countVowels(str) {
+	if (str.length === 0) return 0
+	return str.match(/[aeiou]/g).length
+
+	let vowels = [ 'a', 'e', 'i', 'o', 'u' ]
+	let count = 0
+	for (let i = 0; i < str.length; i++) {
+		for (let j = 0; j < vowels.length; j++) {
+			if (str[i] === vowels[j]) count++
+		}
+	}
+	return count
+}
+console.log(countVowels('edabit'))
+console.log(countVowels(''))
