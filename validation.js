@@ -43,3 +43,9 @@ function match(s1, s2) {
 // console.log('hi'.toLowerCase().match('Hi'.toLowerCase()))
 // console.log(match('bald', 'blad'))
 // console.log(match('1', '0'))
+
+/**Is it True? */
+function isTrue(str) {
+	return eval(str.replace('=', '=='))
+}
+console.log(isTrue('2 = 2'))

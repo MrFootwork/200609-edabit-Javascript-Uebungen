@@ -288,3 +288,20 @@ function numToGoogle(arr) {
 // console.log(numToGoogle([ '12213467', '321', '122906' ]))
 // console.log(numToGoogle([ '122134678' ]))
 // console.log(numToGoogle([ '15345678' ]))
+
+/** Prefix Notation Evaluation*/
+function prefix(exp) {
+	exp = exp.split(' ').map(num => +num || num)
+	for (let i = exp.length - 3; i >= 0; i--) {
+		//looking for last operator while i moves backwards
+		//if a valid PN term is found, the elements are replaced by its result
+		if (isNaN(exp[i]) && !isNaN(exp[i + 1]) && !isNaN(exp[i + 2])) {
+			exp.splice(i, 3, eval(exp[i + 1] + exp[i] + exp[i + 2]))
+		}
+	}
+	return exp[0]
+}
+console.log(prefix('+ 5 4'))
+console.log(prefix('* 12 2'))
+console.log(prefix('* - 8 6 10'))
+console.log(prefix('+ - * / 100 10 4 100 20'))

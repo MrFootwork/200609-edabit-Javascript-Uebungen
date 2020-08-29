@@ -328,3 +328,13 @@ function countBoomerangs(arr) {
 }
 // console.log(countBoomerangs([ 9, 5, 9, 5, 1, 1, 1 ]))
 // console.log(countBoomerangs([ 5, 6, 6, 7, 6, 3, 9 ]))
+
+/**Star Ratings */
+function starRating(arr) {
+	let starSum = arr.reduce((sum, starCount) => sum + starCount, 0)
+	let avg = arr.reduce((avg, starCount, i) => avg + starCount * (i + 1) / starSum, 0)
+	return `[${avg.toFixed(2)}] ${'*'.repeat(Math.round(avg))}`
+}
+console.log(starRating([ 55, 67, 98, 115, 61 ]))
+console.log(starRating([ 0, 2, 0, 1, 23 ]))
+console.log(starRating([ 16, 17, 23, 40, 45 ]))
