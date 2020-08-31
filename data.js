@@ -301,7 +301,21 @@ function prefix(exp) {
 	}
 	return exp[0]
 }
-console.log(prefix('+ 5 4'))
-console.log(prefix('* 12 2'))
-console.log(prefix('* - 8 6 10'))
-console.log(prefix('+ - * / 100 10 4 100 20'))
+// console.log(prefix('+ 5 4'))
+// console.log(prefix('* 12 2'))
+// console.log(prefix('* - 8 6 10'))
+// console.log(prefix('+ - * / 100 10 4 100 20'))
+
+/**Sum of Odd and Even Numbers */
+function sumOddAndEven(arr) {
+	return arr.reduce(
+		(sums, number) => {
+			const isOdd = number => Math.abs(number) % 2
+			sums[isOdd(number)] += number
+			return sums
+		},
+		[ 0, 0 ]
+	)
+}
+// console.log(sumOddAndEven([ 1, 2, 3, 4, 5, 6 ]))
+// console.log(sumOddAndEven([ -1, -2, -3, -4, -5, -6 ]))

@@ -322,5 +322,39 @@ function countVowels(str) {
 	}
 	return count
 }
-console.log(countVowels('edabit'))
-console.log(countVowels(''))
+// console.log(countVowels('edabit'))
+// console.log(countVowels(''))
+
+/**Scoring Strings */
+function scoreIt(s) {
+	//create an array with numbers and paranthesis
+	let newS = [ ...s ]
+	for (let i = 0; i < newS.length; i++)
+		if (!isNaN(newS[i]) && !isNaN(newS[i + 1])) newS.splice(i, 2, newS[i] + newS[i-- + 1])
+
+	//count the score
+	let [ level, score ] = [ 0, 0 ]
+	newS.forEach(number => {
+		if (number == '(') level++
+		if (number == ')') level--
+		if (!isNaN(number)) score += number * level
+	})
+	return score
+}
+// console.log(scoreIt('((((1)2)3)4)'))
+// console.log(scoreIt('(((((20)))))'))
+// console.log(scoreIt('123(4)56'))
+
+/**Kaprekar Numbers */
+function isKaprekar(n) {
+	let square = `${n ** 2}`,
+		left = +square.slice(0, square.length / 2),
+		right = +square.slice(square.length / 2)
+
+	return left + right == n
+}
+// console.log(isKaprekar(9))
+// console.log(isKaprekar(65))
+// console.log(isKaprekar(99))
+// console.log(isKaprekar(297))
+// console.log(isKaprekar(666))

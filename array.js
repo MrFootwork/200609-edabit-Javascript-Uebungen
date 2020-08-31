@@ -335,6 +335,20 @@ function starRating(arr) {
 	let avg = arr.reduce((avg, starCount, i) => avg + starCount * (i + 1) / starSum, 0)
 	return `[${avg.toFixed(2)}] ${'*'.repeat(Math.round(avg))}`
 }
-console.log(starRating([ 55, 67, 98, 115, 61 ]))
-console.log(starRating([ 0, 2, 0, 1, 23 ]))
-console.log(starRating([ 16, 17, 23, 40, 45 ]))
+// console.log(starRating([ 55, 67, 98, 115, 61 ]))
+// console.log(starRating([ 0, 2, 0, 1, 23 ]))
+// console.log(starRating([ 16, 17, 23, 40, 45 ]))
+
+/**Peeling off the Outer Layers */
+function peelLayerOff(arr) {
+	return arr.slice(1, -1).map(column => column.slice(1, -1))
+}
+// console.log(
+// 	peelLayerOff([
+// 		[ 'a', 'b', 'c', 'd' ],
+// 		[ 'e', 'f', 'g', 'h' ],
+// 		[ 'i', 'j', 'k', 'l' ],
+// 		[ 'm', 'n', 'o', 'p' ],
+// 	])
+// )
+// console.log(peelLayerOff([ [ 'hello', 'world' ], [ 'hello', 'world' ] ]))

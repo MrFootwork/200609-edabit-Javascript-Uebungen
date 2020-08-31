@@ -202,3 +202,49 @@ let my_shiritori = new Shiritori()
 // console.log(my_shiritori)
 // console.log(my_shiritori.restart())
 // console.log(my_shiritori)
+
+/**Adding Elements to the End of a Singly Linked List */
+function Node(element) {
+	this.element = element
+	this.next = null
+}
+
+function LinkedList() {
+	let length = 0
+	let head = null
+
+	// write your code below
+	this.push = function(element) {
+		const node = new Node(element)
+		if (!head) {
+			head = node
+			length++
+			return element
+		}
+		let current = head
+		while (current.next) {
+			current = current.next
+		}
+		current.next = node
+		length++
+		return element
+	}
+	// code ends here
+
+	this.check = function() {
+		let current = head,
+			sol = []
+		while (current) {
+			sol.push(current.element)
+			current = current.next
+		}
+		return sol.join('')
+	}
+}
+
+const first = new LinkedList()
+first
+console.log(first.push(2))
+console.log(first.push(23))
+console.log(first.check())
+//https://edabit.com/challenge/xsLBGKTk6upShQTS7
