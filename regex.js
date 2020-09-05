@@ -149,5 +149,5 @@ const num_of_digits = num => `${num}`.match(/\d/g).length
 
 /**Adding Numbers in s String */
 const addNums = nums => nums.match(/-?\d+/g).reduce((total, num) => total + +num, 0)
-console.log('20: ', addNums('2, 5, 1, 8, 4'))
-console.log('-7: ', addNums('-12, -8, 2, 11, -16, 16'))
+// console.log('20: ', addNums('2, 5, 1, 8, 4'))
+// console.log('-7: ', addNums('-12, -8, 2, 11, -16, 16'))

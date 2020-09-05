@@ -41,7 +41,10 @@ console.log(sumOfCubes([5]));
 console.log(sumOfCubes([])); */
 
 /**Add up the Numbers from a Single Number */
-const addUp = num => (num ? num + addUp(--num) : 0)
+const addUp = num => {
+	return num ? num + addUp(--num) : 0
+	return num * (num + 1) / 2
+}
 
 /** Absolute Sum*/
 const getAbsSum = arr => arr.reduce((sum, num) => sum + Math.abs(num), 0)

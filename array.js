@@ -352,3 +352,51 @@ function peelLayerOff(arr) {
 // 	])
 // )
 // console.log(peelLayerOff([ [ 'hello', 'world' ], [ 'hello', 'world' ] ]))
+
+/**Finding Nemo */
+function findNemo(sentence) {
+	let nemoFoundAt = sentence.split(' ').indexOf('Nemo') + 1
+	if (nemoFoundAt) return `I found Nemo at ${nemoFoundAt}!`
+	return `I can't find Nemo :(`
+}
+// console.log(findNemo('I am finding Nemo !'))
+// console.log(findNemo('I Nemo am'))
+// console.log(findNemo('I am'))
+
+/**Finding Common Elements */
+function commonElements(arr1, arr2) {
+	//JS methods
+	return [ ...new Set(arr1.filter(element => arr2.includes(element))) ]
+
+	//in-place operation
+	let pointer1 = 0
+	let pointer2 = 0
+	let stack = -1
+	while (pointer1 !== arr1.length && pointer2 !== arr2.length) {
+		if (arr1[pointer1] < arr2[pointer2]) pointer1++
+		if (arr1[pointer1] > arr2[pointer2]) pointer2++
+		if (arr1[pointer1] === arr2[pointer2]) {
+			arr1[++stack] = arr1[pointer1++]
+			pointer2++
+		}
+	}
+	arr1.splice(++stack, arr1.length - stack)
+	return arr1
+}
+// console.log(commonElements([ -1, 3, 4, 6, 7, 9 ], [ 1, 3 ]))
+// console.log(commonElements([ 1, 2, 2, 2, 3, 4, 5 ], [ 1, 2, 4, 5 ]))
+
+/** Sum of Slices of an Array (Part 1)*/
+function sumOfSlices(arr) {
+	return arr.reduce(
+		(result, val) =>
+			result[result.length - 1] + val <= 100
+				? ((result[result.length - 1] += val), result)
+				: (result.push(val), result),
+		[ 0 ]
+	)
+}
+// console.log(sumOfSlices([ 10, 29, 13, 14, 15, 16, 17, 31, 20, 10, 29, 13, 14, 15, 16, 17, 31, 20, 100 ]))
+// console.log(sumOfSlices([ 58, 3, 38, 99, 10 ]))
+// console.log(sumOfSlices([ 13 ]))
+// console.log(sumOfSlices([ 315, 47 ]))

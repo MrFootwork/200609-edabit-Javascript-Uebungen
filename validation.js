@@ -48,4 +48,21 @@ function match(s1, s2) {
 function isTrue(str) {
 	return eval(str.replace('=', '=='))
 }
-console.log(isTrue('2 = 2'))
+// console.log(isTrue('2 = 2'))
+
+/**25-Mile Marathon */
+function marathonDistance(d) {
+	// JS methods
+	return d.reduce((sum, num) => sum + Math.abs(num), 0) === 25
+
+	//in-place operation
+	d[0] = Math.abs(d[0])
+	while (d.length > 1) {
+		d[0] += Math.abs(d[1])
+		d.splice(1, 1)
+	}
+	return d[0] === 25
+}
+// console.log(marathonDistance([ 1, 2, 3, 4 ]))
+// console.log(marathonDistance([ 1, 9, 5, 8, 2 ]))
+// console.log(marathonDistance([ -6, 15, 4 ]))
