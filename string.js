@@ -358,3 +358,19 @@ function isKaprekar(n) {
 // console.log(isKaprekar(99))
 // console.log(isKaprekar(297))
 // console.log(isKaprekar(666))
+
+/**Smiley Faces :) */
+function happinessNumber(s) {
+	let happiness = 0
+	let smiley = ''
+
+	for (let i = 1; i < s.length; i++) {
+		smiley = s.substring(i - 1, i + 1)
+		if (smiley === ':)' || smiley === '(:') happiness++
+		if (smiley === ':(' || smiley === '):') happiness--
+	}
+	return happiness
+}
+// console.log(happinessNumber(':):('))
+// console.log(happinessNumber('(:)'))
+// console.log(happinessNumber('::::'))

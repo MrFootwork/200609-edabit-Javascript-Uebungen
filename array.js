@@ -400,3 +400,57 @@ function sumOfSlices(arr) {
 // console.log(sumOfSlices([ 58, 3, 38, 99, 10 ]))
 // console.log(sumOfSlices([ 13 ]))
 // console.log(sumOfSlices([ 315, 47 ]))
+
+/**Decimal to Binary Using Stack */
+function Stack() {
+	let data = []
+	this.push = function(item) {
+		data.push(item)
+	}
+	this.isEmpty = function() {
+		return !data.length
+	}
+	this.pop = function() {
+		return data.pop()
+	}
+	this.peek = function() {
+		return data[data.length - 1]
+	}
+	this.size = function() {
+		return data.length
+	}
+}
+
+function toBinary(num) {
+	let stack = new Stack()
+	stack.push(0)
+	for (let i = 0; i < num; i++) {
+		if (!stack.peek()) {
+			//wenn hinten 0 => 1
+			stack.pop()
+			stack.push(1)
+		} else {
+			//wenn hinten 1 => 0
+			let cMod = 0
+			while (stack.peek()) {
+				stack.pop()
+				cMod++
+			}
+			stack.pop()
+			stack.push(1)
+			while (cMod) {
+				stack.push(0)
+				cMod--
+			}
+		}
+	}
+	let binary = Array(stack.size())
+	for (let i = stack.size() - 1; i >= 0; i--) {
+		binary[i] = stack.pop()
+	}
+	return +binary.join('')
+
+	//TODO: use bitwise operations instead
+}
+// console.log(toBinary(12))
+// console.log(toBinary(101))

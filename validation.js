@@ -66,3 +66,19 @@ function marathonDistance(d) {
 // console.log(marathonDistance([ 1, 2, 3, 4 ]))
 // console.log(marathonDistance([ 1, 9, 5, 8, 2 ]))
 // console.log(marathonDistance([ -6, 15, 4 ]))
+
+/**Vowel Sandwich */
+function isVowelSandwich(str) {
+	const RegExp = /^[^aeiou][aeiou][^aeiou]$/i
+	return RegExp.test(str)
+}
+// console.log(isVowelSandwich('cat'))
+// console.log(isVowelSandwich('ear'))
+
+/** Match the Last Item*/
+function matchLastItem(arr) {
+	return arr.pop() === arr.join('')
+}
+// console.log(matchLastItem([ 'rsq', '6hi', 'g', 'rsq6hig' ]))
+// console.log(matchLastItem([ 1, 1, 1, '11' ]))
+// console.log(matchLastItem([ 8, 'thunder', true, '8thundertrue' ]))
