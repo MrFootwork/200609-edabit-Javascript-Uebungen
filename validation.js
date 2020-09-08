@@ -82,3 +82,23 @@ function matchLastItem(arr) {
 // console.log(matchLastItem([ 'rsq', '6hi', 'g', 'rsq6hig' ]))
 // console.log(matchLastItem([ 1, 1, 1, '11' ]))
 // console.log(matchLastItem([ 8, 'thunder', true, '8thundertrue' ]))
+
+/**Xs and Os, Nobody Knows */
+function XO([ ...str ]) {
+	//JS methods
+	const xoCount = (str, xo) => str.filter(char => char.toLowerCase() === xo).length
+	return xoCount(str, 'x') === xoCount(str, 'o')
+
+	//in-place
+	let cX = 0
+	for (let i = 0; i < str.length; i++) {
+		if (str[i].match(/x/i)) str.splice(cX++, 1, ...str.splice(i, 1, 'o'))
+		if (str[i].match(/[^xo]/i)) str.splice(i--, 1)
+	}
+	return cX === str.length / 2
+}
+// console.log('true: ', XO('ooxx'))
+// console.log('false: ', XO('xooxx'))
+// console.log('true: ', XO('ooxXm'))
+// console.log('true: ', XO('zpzpzpp'))
+// console.log('false: ', XO('zzoo'))
