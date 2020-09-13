@@ -454,3 +454,54 @@ function toBinary(num) {
 }
 // console.log(toBinary(12))
 // console.log(toBinary(101))
+
+/**Sum of all Evens in a Matrix */
+function sumOfEvens(arr) {
+	return arr //
+		.flat()
+		.filter(num => !(num % 2))
+		.reduce((sum, even) => sum + even, 0)
+
+	//O(n)
+	let topLen = arr.length
+	let bottomLen = arr[0].length || 0
+	let sum = 0
+
+	for (let i = 0; i < topLen; i++) {
+		for (let j = 0; j < bottomLen; j++) {
+			if (!(arr[i][j] % 2)) sum += arr[i][j]
+		}
+	}
+	return sum
+}
+// console.log(sumOfEvens([ [ 1, 0, 2 ], [ 5, 5, 7 ], [ 9, 4, 3 ] ]))
+// console.log(sumOfEvens([ [], [], [] ]))
+// console.log(sumOfEvens([ [ 1, 1 ], [ 1, 1 ] ]))
+// console.log(sumOfEvens([ [ 1, 5, 1, 3 ], [ 4, 1, 2, 0 ], [ 6, 9, 7, 4 ], [ 5, 1, 2, 6 ] ]))
+
+/**Array Chunking */
+function chunk(array, size) {
+	let result = []
+	while (array.length > 0) {
+		result.push(array.splice(0, size))
+	}
+	return result
+
+	//O(n)
+	let subSize = size
+	let iNextSub = 0
+	for (let i = 0; i < array.length; i++) {
+		if (subSize === size) {
+			array.splice(iNextSub++, 1, [ array[i] ])
+			subSize = 1
+		} else {
+			array[iNextSub - 1].push(...array.splice(i--, 1))
+			subSize++
+		}
+	}
+	return array
+}
+//https://edabit.com/challenge/AWEX2eYNWGEsig4Fc?tab=comments&commentId=TGN2ufH2sbwZRN8TE
+console.log(chunk([ 1, 2, 3, 4 ], 2))
+console.log(chunk([ 1, 2, 3, 4, 5, 6, 7 ], 3))
+console.log(chunk([ 1, 2, 3, 4, 5 ], 10))

@@ -189,3 +189,33 @@ function primeFactorize(num) {
 // console.log(primeFactorize(48))
 // console.log(primeFactorize(77))
 // console.log(primeFactorize(1))
+
+/**Strong Password Checker */
+function strongPasswordChecker(str) {
+	const repeats = str.match(/(.)\1{2,}/g) || []
+	const repfix = repeats.reduce((a, b) => a + Math.floor(Math.min(20, b.length) / 3), 0)
+	const typefix = 3 - /[a-z]/g.test(str) - /[A-Z]/g.test(str) - /\d/g.test(str)
+	const underfix = Math.max(8 - str.length, 0)
+	const overfix = Math.max(str.length - 20, 0)
+	return overfix + Math.max(repfix, typefix, underfix)
+
+	// let changeNeed = 0
+	// if (!str.match(/[a-z]/)) changeNeed++
+	// if (!str.match(/[A-Z]/)) changeNeed++
+	// if (!str.match(/[0-9]/)) changeNeed++
+	// if (!(str.length <= 20)) changeNeed++
+	// if (!(8 <= str.length) && changeNeed) changeNeed += 8 - str.length - changeNeed
+	// if (!(8 <= str.length) && !changeNeed) changeNeed++
+	// console.log(changeNeed)
+	// changeNeed += (str.match(/(.)\1{2}/g) || []).length
+	// return changeNeed
+}
+console.log(strongPasswordChecker('Edabit!'))
+console.log(strongPasswordChecker('edabit1!'))
+console.log(strongPasswordChecker('EDABITEDABITEDABITEDA'))
+console.log(strongPasswordChecker('Edaaaabit!!1'))
+
+console.log(strongPasswordChecker('Edab1111111t!!!'))
+console.log(strongPasswordChecker('1234'))
+
+console.log(strongPasswordChecker('LLLLLLLLLLLLLLLLLLLL'))

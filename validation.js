@@ -102,3 +102,26 @@ function XO([ ...str ]) {
 // console.log('true: ', XO('ooxXm'))
 // console.log('true: ', XO('zpzpzpp'))
 // console.log('false: ', XO('zzoo'))
+
+/**Something in the Box?
+ */
+function inBox(arr) {
+	for (let i = 1; i < arr.length - 1; i++) {
+		if (arr[i].match(/^#\s*\*{1}\s*#$/)) return true
+	}
+	return false
+}
+// console.log(inBox([ '###', '#*#', '###' ]))
+// console.log(inBox([ '*####', '# #', '#  #*', '####' ]))
+// console.log(inBox([ '####', '#* #', '#  #', '####' ]))
+// console.log(inBox([ '#####', '#   #', '#   #', '# * #', '#####' ]))
+
+/**Double Letters */
+function doubleLetters(word) {
+	const RegExp = /(\w)\1+/g
+	return !!word.match(RegExp)
+}
+// console.log(doubleLetters('loop'))
+// console.log(doubleLetters('yummy'))
+// console.log(doubleLetters('orange'))
+// console.log(doubleLetters('munchkin'))
