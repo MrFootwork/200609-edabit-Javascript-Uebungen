@@ -502,6 +502,34 @@ function chunk(array, size) {
 	return array
 }
 //https://edabit.com/challenge/AWEX2eYNWGEsig4Fc?tab=comments&commentId=TGN2ufH2sbwZRN8TE
-console.log(chunk([ 1, 2, 3, 4 ], 2))
-console.log(chunk([ 1, 2, 3, 4, 5, 6, 7 ], 3))
-console.log(chunk([ 1, 2, 3, 4, 5 ], 10))
+// console.log(chunk([ 1, 2, 3, 4 ], 2))
+// console.log(chunk([ 1, 2, 3, 4, 5, 6, 7 ], 3))
+// console.log(chunk([ 1, 2, 3, 4, 5 ], 10))
+
+/**Indey Parity of Largest Even */
+function bitwiseIndex(arr) {
+	//bitwise
+	let [ x, k ] = arr.reduce((v, n, i) => (v = !(n & 1) && n > v[0] ? [ n, i ] : v), [ -Infinity, -1 ])
+	return k == -1 ? 'No even integer found!' : { [`@${[ 'even', 'odd' ][k & 1]} index ${k}`]: x }
+
+	//my solution
+	const isEven = num => Math.floor(num / 2) * 2 === num
+	let intMax = 0
+	let iMax = -1
+	let found = false
+
+	for (let i = 0; i < arr.length; i++) {
+		if (isEven(arr[i]) && arr[i] > intMax) {
+			intMax = arr[i]
+			iMax = i
+			found = true
+		}
+	}
+	let answer = { [`@${isEven(iMax) ? 'even' : 'odd'} index ${iMax}`]: intMax }
+	if (found) return answer
+	return 'No even integer found!'
+}
+// console.log(bitwiseIndex([ 107, 19, 36, -18, -78, 24, 97 ]))
+// console.log(bitwiseIndex([ 31, 7, 2, 13, 7, 9, 10, 13 ]))
+// console.log(bitwiseIndex([ 4, 4, 4, 4, 4, 4 ]))
+// console.log(bitwiseIndex([ -31, -7, -13, -7, -9, -13 ]))
