@@ -163,3 +163,10 @@ function isPowerful(num) {
 	return factors.every(factor => num % factor ** 2 == 0)
 }
 // console.log(isPowerful(674))
+
+/**Calculate Using String Operation */
+function calculate(num1, num2, op) {
+	return eval(num1 + op + num2)
+}
+// console.log(calculate(4, 9, '-'))
+// console.log(calculate(12, 5, '*'))

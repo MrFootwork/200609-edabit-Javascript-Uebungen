@@ -25,8 +25,8 @@ const isTruthy = input => (input ? 1 : 0)
 //console.log(isTruthy(" "));
 
 //Return First and Last Parameter
-const firstArg = (...arguments) => arguments[0]
-const lastArg = (...arguments) => arguments[arguments.length - 1]
+// const firstArg = (...arguments) => arguments[0]
+// const lastArg = (...arguments) => arguments[arguments.length - 1]
 /* console.log(firstArg(1, 2, 3));
 console.log(lastArg(2, 5, 9, 10)); */
 
@@ -210,12 +210,38 @@ function strongPasswordChecker(str) {
 	// changeNeed += (str.match(/(.)\1{2}/g) || []).length
 	// return changeNeed
 }
-console.log(strongPasswordChecker('Edabit!'))
-console.log(strongPasswordChecker('edabit1!'))
-console.log(strongPasswordChecker('EDABITEDABITEDABITEDA'))
-console.log(strongPasswordChecker('Edaaaabit!!1'))
+// console.log(strongPasswordChecker('Edabit!'))
+// console.log(strongPasswordChecker('edabit1!'))
+// console.log(strongPasswordChecker('EDABITEDABITEDABITEDA'))
+// console.log(strongPasswordChecker('Edaaaabit!!1'))
+// console.log(strongPasswordChecker('Edab1111111t!!!'))
+// console.log(strongPasswordChecker('1234'))
+// console.log(strongPasswordChecker('LLLLLLLLLLLLLLLLLLLL'))
 
-console.log(strongPasswordChecker('Edab1111111t!!!'))
-console.log(strongPasswordChecker('1234'))
+/**The Collatz Conjecture */
+function collatz(num) {
+	// let steps = 0
+	// while (num !== 1) {
+	// 	!(num % 2) ? (num /= 2) : (num = num * 3 + 1)
+	// 	steps++
+	// }
+	// return steps
 
-console.log(strongPasswordChecker('LLLLLLLLLLLLLLLLLLLL'))
+	//recursion
+	if (num === 1) return 0
+	return 1 + collatz(!(num % 2) ? num / 2 : num * 3 + 1)
+}
+// console.log(collatz(2))
+// console.log(collatz(3))
+// console.log(collatz(10))
+
+/**Repeat a Char */
+function repeat(str, nb) {
+	if (nb <= 0) return ''
+	return str + repeat(str, nb - 1)
+	//TODO: exceeds call stack
+}
+//https://edabit.com/challenge/HQXJLmsGK9KiKmeDf?tab=comments&commentId=zygb7R2AAj8tYScXX
+// console.log(repeat('-', 3))
+// console.log(repeat('A', 268435440))
+// console.log(repeat('c', -1))
