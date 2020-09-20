@@ -245,3 +245,28 @@ function repeat(str, nb) {
 // console.log(repeat('-', 3))
 // console.log(repeat('A', 268435440))
 // console.log(repeat('c', -1))
+
+/**No Good Numbers */
+function howBad(num) {
+	let binPop = [ ...num.toString(2) ].filter(n => +n).length
+	let descriptors = []
+
+	// evil = even number of 1s
+	// odious = odd number of 1s
+	if (!(binPop % 2)) descriptors.push('Evil')
+	else descriptors.push('Odious')
+
+	// pernicious = population is a prime number
+	if (isPrime(binPop)) descriptors.push('Pernicious')
+
+	//https://stackoverflow.com/questions/40200089/number-prime-test-in-javascript#:~:text=function%20isPrime(num)%20%7B%20if,return%20false%3B%20%7D%20%7D%20console.
+	function isPrime(num) {
+		for (let i = 2; i < num; i++) if (!(num % i)) return false
+		return num > 1
+	}
+
+	return descriptors
+}
+// console.log(howBad(7))
+// console.log(howBad(17))
+// console.log(howBad(23))
