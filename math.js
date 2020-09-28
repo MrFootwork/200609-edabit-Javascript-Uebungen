@@ -170,3 +170,28 @@ function calculate(num1, num2, op) {
 }
 // console.log(calculate(4, 9, '-'))
 // console.log(calculate(12, 5, '*'))
+
+/** Pythagorean Triplet*/
+function isTriplet(n1, n2, n3) {
+	let input = [ n1, n2, n3 ].sort((a, b) => a - b)
+	return input[2] ** 2 === input[0] ** 2 + input[1] ** 2
+}
+const isTriplet2 = (...sides) => sides.sort((a, b) => a - b).pop() === Math.hypot(...sides)
+// console.log(isTriplet(3, 4, 5))
+// console.log(isTriplet(1, 2, 3))
+// console.log(isTriplet(13, 5, 12))
+
+/** Bitwise Operations*/
+function bitwiseAND(n1, n2) {
+	return n1 & n2
+}
+
+function bitwiseOR(n1, n2) {
+	return n1 | n2
+}
+
+function bitwiseXOR(n1, n2) {
+	return n1 ^ n2
+}
+
+console.log(bitwiseXOR(6, 23))

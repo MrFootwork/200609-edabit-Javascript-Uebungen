@@ -374,3 +374,18 @@ function happinessNumber(s) {
 // console.log(happinessNumber(':):('))
 // console.log(happinessNumber('(:)'))
 // console.log(happinessNumber('::::'))
+
+/** Between Words*/
+function isBetween(first, last, word) {
+	return [ first, last, word ].sort()[1] == word
+}
+// console.log(isBetween('apple', 'banana', 'azure'))
+// console.log(isBetween('shrapnel', 'tapenade', 'tally'))
+
+/**Is the String a Palindrome? */
+function checkPalindrome(str) {
+	return [ ...str ].reverse().join('') == str
+}
+// console.log(checkPalindrome('mom'))
+// console.log(checkPalindrome('reviver'))
+// console.log(checkPalindrome('scary'))

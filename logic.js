@@ -248,18 +248,12 @@ function repeat(str, nb) {
 
 /**No Good Numbers */
 function howBad(num) {
-	let binPop = [ ...num.toString(2) ].filter(n => +n).length
+	let population = [ ...num.toString(2) ].filter(n => +n).length
 	let descriptors = []
 
-	// evil = even number of 1s
-	// odious = odd number of 1s
-	if (!(binPop % 2)) descriptors.push('Evil')
-	else descriptors.push('Odious')
+	descriptors.push([ 'Evil', 'Odious' ][population % 2])
+	if (isPrime(population)) descriptors.push('Pernicious')
 
-	// pernicious = population is a prime number
-	if (isPrime(binPop)) descriptors.push('Pernicious')
-
-	//https://stackoverflow.com/questions/40200089/number-prime-test-in-javascript#:~:text=function%20isPrime(num)%20%7B%20if,return%20false%3B%20%7D%20%7D%20console.
 	function isPrime(num) {
 		for (let i = 2; i < num; i++) if (!(num % i)) return false
 		return num > 1
@@ -270,3 +264,20 @@ function howBad(num) {
 // console.log(howBad(7))
 // console.log(howBad(17))
 // console.log(howBad(23))
+
+/** Any Prime Number in Range*/
+function primeInRange(n1, n2) {
+	function isPrime(n) {
+		for (let i = 2; i < n; i++) {
+			if (!(n % i)) return false
+		}
+		return n > 1
+	}
+
+	for (let j = n1; j <= n2; j++) {
+		if (isPrime(j)) return true
+	}
+	return false
+}
+// console.log(primeInRange(10, 15))
+// console.log(primeInRange(62, 66))
