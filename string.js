@@ -63,12 +63,13 @@ console.log(retrievePatch("6.1.9")); */
 //Reverse and Capitalize
 function reverseCapitalize(str) {
 	//return str.split("").reverse().join("").toUpperCase()
-	return [ ...str ].reverse().join('').toUpperCase()
+	return [...str].reverse().join('').toUpperCase()
 }
 //console.log(reverseCapitalize("hellothere"));
 
 //Convert Number to Corresponding Month Name
-const monthName = num => new Date(2000, num - 1).toLocaleString('en-us', { month: 'long' })
+const monthName = num =>
+	new Date(2000, num - 1).toLocaleString('en-us', { month: 'long' })
 //console.log(monthName(12));
 
 //Smaller String Number
@@ -92,7 +93,8 @@ const testJackpot = result => new Set(result).size === 1
 // console.log("result: ", testJackpot(["&&", "&", "&&&", "&&&&"]));
 
 /** Multiplying Numbers in a String*/
-const multiplyNums = nums => nums.split(', ').reduce((product, num) => product * num, 1)
+const multiplyNums = nums =>
+	nums.split(', ').reduce((product, num) => product * num, 1)
 // console.log(multiplyNums("1, 2, 3, 4"));
 
 /**Capitalize by ASCII */
@@ -105,12 +107,17 @@ const asciiCapitalize = str => {
 		  } else capitalizedString += String.fromCharCode(char);
 		}
 		return capitalizedString; */
-	return [ ...str ].map(ascii => (ascii.charCodeAt(0) % 2 ? ascii.toLowerCase() : ascii.toUpperCase())).join('')
+	return [...str]
+		.map(ascii =>
+			ascii.charCodeAt(0) % 2 ? ascii.toLowerCase() : ascii.toUpperCase()
+		)
+		.join('')
 }
 // console.log("To Be oR NoT To Be!=>", asciiCapitalize("to be or not to be!"));
 
 /**Converting One Binary String to Another */
-const minSwaps = (s1, s2) => [ ...s1 ].reduce((totalSwaps, s1, i) => totalSwaps + (s1 != s2[i]), 0) / 2
+const minSwaps = (s1, s2) =>
+	[...s1].reduce((totalSwaps, s1, i) => totalSwaps + (s1 != s2[i]), 0) / 2
 // s2 is a string and enumerable => no array conversion needed
 // console.log("minSwaps => 1: ", minSwaps("1100", "1001"));
 // console.log("minSwaps => 4: ", minSwaps("10011001", "01100110"));
@@ -121,9 +128,12 @@ const numInStr = arr => arr.filter(value => /\d/g.test(value))
 
 /**Calculate an Earned Run Average */
 const era = (er, ip) => {
-	let ipCalc = ip.toString().split('.').map((innings, i) => (i ? [ 0, 1 / 3, 2 / 3 ][innings] : innings))
+	let ipCalc = ip
+		.toString()
+		.split('.')
+		.map((innings, i) => (i ? [0, 1 / 3, 2 / 3][innings] : innings))
 	ipCalc = Number(ipCalc[0]) + Number(ipCalc[1] ? ipCalc[1] : 0)
-	return (er / ipCalc * 9).toFixed(2)
+	return ((er / ipCalc) * 9).toFixed(2)
 	// return (Math.floor(er / ip * 900) / 100).toFixed(2);
 	//
 }
@@ -150,12 +160,12 @@ const arithmeticOperation = n => {
 	//     break;
 	// }
 	// return workVar;
-	const [ num1, operator, num2 ] = n.split(' ')
+	const [num1, operator, num2] = n.split(' ')
 	const operations = {
-		'+' : +num1 + +num2,
-		'-' : +num1 - num2,
-		'*' : +num1 * num2,
-		'/' : +num1 / (+num2 || -num1),
+		'+': +num1 + +num2,
+		'-': +num1 - num2,
+		'*': +num1 * num2,
+		'/': +num1 / (+num2 || -num1),
 	}
 	return operations[operator]
 }
@@ -169,7 +179,7 @@ const uncensor = (str, vowels) => {
 	//   .join("");
 	// vowels = [...vowels];
 	// return str.replace(/\*/g, () => vowels.shift());
-	vowels = [ ...vowels ]
+	vowels = [...vowels]
 	return str.replace(/\*/g, () => vowels.shift())
 }
 // console.log("uncensor", uncensor("Wh*r* d*d my v*w*ls g*?", "eeioeo"));
@@ -185,7 +195,10 @@ const reverseOdd = str => {
 	//   return word; //even
 	// });
 	// return words.join(" ");
-	return str.split(' ').map(word => (word.length % 2 ? [ ...word ].reverse().join('') : word)).join(' ')
+	return str
+		.split(' ')
+		.map(word => (word.length % 2 ? [...word].reverse().join('') : word))
+		.join(' ')
 }
 // console.log("Lösung: enO owt eerht four\n", reverseOdd("One two three four"));
 
@@ -200,15 +213,19 @@ const unmix = str =>
 // console.log(unmix("badce"));
 
 /**Repeating Letters */
-const ndoubleCharame = str => str.split('').map(x => x + x).join('')
+const ndoubleCharame = str =>
+	str
+		.split('')
+		.map(x => x + x)
+		.join('')
 // console.log('ndoubleCharame', ndoubleCharame('String'))
 // console.log('ndoubleCharame', ndoubleCharame('Hello World!'))
 // console.log('ndoubleCharame', ndoubleCharame('1234!_ '))
 
 /**Hashes and Pluses */
 const hashPlusCount = str => {
-	const count = sign => [ ...str ].filter(ch => ch == sign).length
-	return [ count('#'), count('+') ]
+	const count = sign => [...str].filter(ch => ch == sign).length
+	return [count('#'), count('+')]
 }
 // console.log("hashPlusCount", hashPlusCount("###+"))
 // console.log("hashPlusCount", hashPlusCount("##+++#"))
@@ -234,12 +251,14 @@ const firstVowel = str => str.search(/[aeiou]/i)
 // console.log('firstVowel', firstVowel('STRAWBERRY'))
 
 /**Say "Hello" Say "Bye" */
-const sayHelloBye = (name, num) => `${[ 'Bye', 'Hello' ][num]} ${name[0].toUpperCase() + name.substr(1)}`
+const sayHelloBye = (name, num) =>
+	`${['Bye', 'Hello'][num]} ${name[0].toUpperCase() + name.substr(1)}`
 // console.log('sayHelloBye', sayHelloBye('alon', 1))
 // console.log('sayHelloBye', sayHelloBye('Tomi', 0))
 
 /**Strange Pair */
-const isStrangePair = (str1, str2) => str1.endsWith(str2[0]) && str2.endsWith(str1[0])
+const isStrangePair = (str1, str2) =>
+	str1.endsWith(str2[0]) && str2.endsWith(str1[0])
 // console.log('', isStrangePair('ratio', 'orator'))
 // console.log('', isStrangePair('bush', 'hubris'))
 
@@ -258,9 +277,10 @@ function isUnfairHurdle(hurdles) {
 
 /**Reverse the Case */
 function reverseCase(str) {
-	return [ ...str ]
+	return [...str]
 		.map(
-			char => (char.toLowerCase() == char ? char.toUpperCase() : char.toLowerCase()) //
+			char =>
+				char.toLowerCase() == char ? char.toUpperCase() : char.toLowerCase() //
 		)
 		.join('')
 }
@@ -296,7 +316,11 @@ function firstRepeat(chars) {
 	let letterCount = new Map()
 	let result = ''
 
-	for (letter of chars) letterCount.set(letter, [ ...chars ].filter(searchCount => searchCount == letter).length)
+	for (letter of chars)
+		letterCount.set(
+			letter,
+			[...chars].filter(searchCount => searchCount == letter).length
+		)
 
 	letterCount.forEach((count, letter) => {
 		if (count >= 2) result += letter
@@ -313,7 +337,7 @@ function countVowels(str) {
 	if (str.length === 0) return 0
 	return str.match(/[aeiou]/g).length
 
-	let vowels = [ 'a', 'e', 'i', 'o', 'u' ]
+	let vowels = ['a', 'e', 'i', 'o', 'u']
 	let count = 0
 	for (let i = 0; i < str.length; i++) {
 		for (let j = 0; j < vowels.length; j++) {
@@ -328,12 +352,13 @@ function countVowels(str) {
 /**Scoring Strings */
 function scoreIt(s) {
 	//create an array with numbers and paranthesis
-	let newS = [ ...s ]
+	let newS = [...s]
 	for (let i = 0; i < newS.length; i++)
-		if (!isNaN(newS[i]) && !isNaN(newS[i + 1])) newS.splice(i, 2, newS[i] + newS[i-- + 1])
+		if (!isNaN(newS[i]) && !isNaN(newS[i + 1]))
+			newS.splice(i, 2, newS[i] + newS[i-- + 1])
 
 	//count the score
-	let [ level, score ] = [ 0, 0 ]
+	let [level, score] = [0, 0]
 	newS.forEach(number => {
 		if (number == '(') level++
 		if (number == ')') level--
@@ -377,15 +402,56 @@ function happinessNumber(s) {
 
 /** Between Words*/
 function isBetween(first, last, word) {
-	return [ first, last, word ].sort()[1] == word
+	return [first, last, word].sort()[1] == word
 }
 // console.log(isBetween('apple', 'banana', 'azure'))
 // console.log(isBetween('shrapnel', 'tapenade', 'tally'))
 
 /**Is the String a Palindrome? */
 function checkPalindrome(str) {
-	return [ ...str ].reverse().join('') == str
+	return [...str].reverse().join('') == str
 }
 // console.log(checkPalindrome('mom'))
 // console.log(checkPalindrome('reviver'))
 // console.log(checkPalindrome('scary'))
+
+/**Dashed Vowels */
+function dashed(str) {
+	return str.replace(/([aeiou])/gi, '-$1-')
+}
+// console.log(dashed('Edabit'))
+// console.log(dashed('Carpe Diem'))
+// console.log(dashed('Fight for your right to party!'))
+
+/**ReverseAndNot */
+function reverseAndNot(i) {
+	return +([...('' + i)].reverse().join('') + i)
+}
+// console.log(reverseAndNot(123))
+// console.log(reverseAndNot(152))
+// console.log(reverseAndNot(123456789))
+
+/** Barbecue Skewers*/
+function bbqSkewers(grill) {
+	let veggi = grill.filter(skewer => !skewer.includes('x')).length
+	return [veggi, grill.length - veggi]
+}
+
+// console.log(
+// 	bbqSkewers([
+// 		'--oooo-ooo--',
+// 		'--xx--x--xx--',
+// 		'--o---o--oo--',
+// 		'--xx--x--ox--',
+// 		'--xx--x--ox--',
+// 	])
+// )
+// console.log(
+// 	bbqSkewers([
+// 		'--oooo-ooo--',
+// 		'--xxxxxxxx--',
+// 		'--o---',
+// 		'-o-----o---x--',
+// 		'--o---o-----',
+// 	])
+// )
