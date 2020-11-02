@@ -1,4 +1,4 @@
-const uniqueSort = arr => [ ...new Set(arr) ].sort((a, b) => b - a)
+const uniqueSort = arr => [...new Set(arr)].sort((a, b) => b - a)
 // console.log(uniqueSort([ 1, 5, 8, 2, 3, 4, 4, 4, 10 ]))
 
 const rps = (p1, p2) => {
@@ -15,12 +15,12 @@ const matrix = (x, y, z) => Array(x).fill(Array(y).fill(z))
 const sharedLetters = (str1, str2) =>
 	// [ ...new Set(str1) ].reduce((acc, char1) => [ ...new Set(str2) ].some(char2 => char1 === char2) + acc, 0)
 	// [ ...new Set(str1) ].filter(x => new Set(str2).has(x)).length
-	[ ...new Set(str1) ].filter(x => str2.includes(x)).length
+	[...new Set(str1)].filter(x => str2.includes(x)).length
 // console.log('2: ', sharedLetters('apple', 'meaty'))
 
 const countAll = str => ({
-	LETTERS : (str.match(/[a-z]/gi) || []).length,
-	DIGITS  : (str.match(/\d/g) || []).length,
+	LETTERS: (str.match(/[a-z]/gi) || []).length,
+	DIGITS: (str.match(/\d/g) || []).length,
 })
 // console.log('{ "LETTERS":  7, "DIGITS": 3 }', countAll('Hello World'))
 
@@ -32,7 +32,8 @@ const risiko = (att, def) => {
 // console.log('3: ', risiko([ 3, 6, 4 ], [ 2, 5, 3 ]))
 // console.log('0: ', risiko([ 3, 6 ], [ 6, 4, 4 ]))
 
-const sumFractions = arr => Math.round(arr.reduce((sum, fr) => sum + fr[0] / fr[1], 0))
+const sumFractions = arr =>
+	Math.round(arr.reduce((sum, fr) => sum + fr[0] / fr[1], 0))
 // console.log('2: ', sumFractions([ [ 18, 13 ], [ 4, 5 ] ]))
 
 const hemisphereSeason = (hemisphere, date) => {
@@ -40,22 +41,23 @@ const hemisphereSeason = (hemisphere, date) => {
 	// 	(((new Date(date).getMonth() + (hemisphere === 'N' ? 10 : 16)) / 3) | 0) % 4
 	// ]
 	date = new Date(date).getMonth()
-	let order = [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0, 1 ],
+	let order = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0, 1],
 		seasons = {
-			N : [ 'Spring', 'Summer', 'Autumn', 'Winter' ],
-			S : [ 'Autumn', 'Winter', 'Spring', 'Summer' ],
+			N: ['Spring', 'Summer', 'Autumn', 'Winter'],
+			S: ['Autumn', 'Winter', 'Spring', 'Summer'],
 		}
 	return seasons[hemisphere][Math.floor(order.indexOf(date) / 3)]
 }
 // console.log('Summer: ', hemisphereSeason('S', 'January, 2'))
 // console.log('Summer: ', hemisphereSeason('N', 'June, 30'))
 
-const oldest = people => Object.keys(people).reduce((a, b) => (people[a] >= people[b] ? a : b))
+const oldest = people =>
+	Object.keys(people).reduce((a, b) => (people[a] >= people[b] ? a : b))
 // console.log('oldest -> ', oldest({ Emma: 71, Jack: 45, Amy: 15, Ben: 29 }))
 
 const minRemovals = (str1, str2) => {
-	let unique1 = [ ...str1 ].filter(char => !str2.includes(char))
-	let unique2 = [ ...str2 ].filter(char => !str1.includes(char))
+	let unique1 = [...str1].filter(char => !str2.includes(char))
+	let unique2 = [...str2].filter(char => !str1.includes(char))
 	return unique1.push(...unique2)
 }
 // console.log('2: ', minRemovals('abcde', 'cab'))
@@ -90,17 +92,21 @@ const stemPlot = arr => {
 // console.log('', stemPlot([ 4, 8, 75 ]))
 
 /**True Ones, False Zeros*/
-const integerBoolean = n => [ ...n ].map(num => num == 1)
+const integerBoolean = n => [...n].map(num => num == 1)
 // console.log('', integerBoolean('100101'))
 
 /**Delete Occurrences of Extra Elements in an Array */
-deleteOccurrences = (arr, num, count = {}) => arr.filter(v => (count[v] >= num ? 0 : (count[v] = ++count[v] || 1)))
+deleteOccurrences = (arr, num, count = {}) =>
+	arr.filter(v => (count[v] >= num ? 0 : (count[v] = ++count[v] || 1)))
 // console.log(deleteOccurrences([ 1, 1, 1, 1 ], 2))
 // console.log(deleteOccurrences([ 13, true, 13, null ], 1))
 // console.log(deleteOccurrences([ true, true, true ], 3))
 
 /**Pricey Products */
-const products = r => Object.keys(r).sort((a, b) => r[b] - r[a]).filter(product => r[product] >= 500)
+const products = r =>
+	Object.keys(r)
+		.sort((a, b) => r[b] - r[a])
+		.filter(product => r[product] >= 500)
 // console.log(products({ Computer: 600, TV: 800, Radio: 50 }))
 
 /**The Array Twins */
@@ -116,14 +122,16 @@ function twins(arr) {
 /**Album in Albumns */
 function releaseYear(album) {
 	const albums = {
-		'2015' : [ 'Vulnicura', 'Honeymoon', 'Rebel Heart' ],
-		'2016' : [ 'Lemonade', 'Blackstar', 'A Moon Shaped Pool' ],
-		'2017' : [ 'Flower Boy', 'Antisocialites' ],
-		'2018' : [ 'El Mal Querer', 'Someone Out There', 'Cranberry', 'Kamikaze' ],
-		'2019' : [ 'thank u next', 'Magdalene', 'Ode to Joy' ],
-		'2020' : [ 'Rough and Rowdy Ways', 'folklore', 'Future Nostalgia', 'Colores' ],
+		2015: ['Vulnicura', 'Honeymoon', 'Rebel Heart'],
+		2016: ['Lemonade', 'Blackstar', 'A Moon Shaped Pool'],
+		2017: ['Flower Boy', 'Antisocialites'],
+		2018: ['El Mal Querer', 'Someone Out There', 'Cranberry', 'Kamikaze'],
+		2019: ['thank u next', 'Magdalene', 'Ode to Joy'],
+		2020: ['Rough and Rowdy Ways', 'folklore', 'Future Nostalgia', 'Colores'],
 	}
-	let search = Object.keys(albums).filter(year => albums[year].includes(album))[0]
+	let search = Object.keys(albums).filter(year =>
+		albums[year].includes(album)
+	)[0]
 	return search ? +search : 'Unknown'
 }
 // console.log(releaseYear('Ode to Joy'))
@@ -139,7 +147,8 @@ function histogram(arr, char) {
 
 /**Building a Pie Chart */
 function pieChart(data) {
-	let degreePerUnit = 360 / Object.values(data).reduce((sum, value) => sum + value, 0)
+	let degreePerUnit =
+		360 / Object.values(data).reduce((sum, value) => sum + value, 0)
 	for (category in data) {
 		data[category] = +(data[category] * degreePerUnit).toFixed(1)
 	}
@@ -161,9 +170,18 @@ function warpTunnel(mtx, n) {
 
 /**Check Magic Square */
 function isMagicSquare(square) {
-	const magicalSum = square[0].reduce((rowSum, rowElement) => rowSum + rowElement, 0)
+	const magicalSum = square[0].reduce(
+		(rowSum, rowElement) => rowSum + rowElement,
+		0
+	)
 	//all rows
-	if (square.some(row => row.reduce((rowSum, rowElement) => rowSum + rowElement, 0) != magicalSum)) return false
+	if (
+		square.some(
+			row =>
+				row.reduce((rowSum, rowElement) => rowSum + rowElement, 0) != magicalSum
+		)
+	)
+		return false
 	//all columns
 	for (let i = 0; i < square[0].length; i++) {
 		let columnSum = 0
@@ -186,7 +204,7 @@ function isMagicSquare(square) {
 
 /**Unique Character Mapping */
 function characterMapping(str) {
-	return [ ...str ].map(key => [ ...new Set(str) ].indexOf(key))
+	return [...str].map(key => [...new Set(str)].indexOf(key))
 }
 // console.log(characterMapping('abcdd'))
 // console.log(characterMapping('babbcb'))
@@ -196,10 +214,10 @@ function characterMapping(str) {
 function migrateProduct(oldProduct) {
 	const newProduct = {
 		...oldProduct,
-		price      : oldProduct.price * 1.15,
-		containers : oldProduct.containers.map(container => ({
+		price: oldProduct.price * 1.15,
+		containers: oldProduct.containers.map(container => ({
 			...container,
-			deposit : container.type === 'bottle' ? 0.2 : container.deposit,
+			deposit: container.type === 'bottle' ? 0.2 : container.deposit,
 		})),
 	}
 	return { oldProduct, newProduct }
@@ -218,7 +236,8 @@ function migrateProduct(oldProduct) {
 
 /**Postfix Notation */
 function postfix(E) {
-	while (isNaN(E)) E = E.replace(/(\d+) (\d+) (\D)/g, (_, l, r, o) => eval(l + o + r))
+	while (isNaN(E))
+		E = E.replace(/(\d+) (\d+) (\D)/g, (_, l, r, o) => eval(l + o + r))
 	return +E
 }
 // console.log(postfix('2 2 +'))
@@ -246,12 +265,14 @@ function split(str) {
 
 /**Decimal Range Function */
 function drange(start, end = null, step = 1) {
-	if (end === null) [ start, end ] = [ 0, start ]
+	if (end === null) [start, end] = [0, start]
 
 	let range = []
 	for (let i = start; i < end; i += step) range.push(i)
 
-	const decimal = Math.max(...[ start, end, step ].map(x => `${x}`.length - `${x}`.indexOf('.') - 1))
+	const decimal = Math.max(
+		...[start, end, step].map(x => `${x}`.length - `${x}`.indexOf('.') - 1)
+	)
 	return range.map(x => +x.toFixed(decimal))
 }
 // console.log(drange(1.2, 5.9, 0.45))
@@ -265,17 +286,20 @@ function numToGoogle(arr) {
 		let instruction = '' + arrayWord
 		if (instruction.includes('9')) break
 		let word = ''
-		let letters = [ ...instruction.replace(/0.*/g, '') ].filter(
+		let letters = [...instruction.replace(/0.*/g, '')].filter(
 			code => code == 1 || code == 2 || code == 3 || code == 4
 		)
 
-		for (letter of letters) word += [ 'g', 'o', 'l', 'e' ][letter - 1]
+		for (letter of letters) word += ['g', 'o', 'l', 'e'][letter - 1]
 
-		if (instruction.includes('5')) word = [ ...word ].map(letter => letter.toUpperCase()).join('')
+		if (instruction.includes('5'))
+			word = [...word].map(letter => letter.toUpperCase()).join('')
 		if (instruction.includes('6')) word += '.'
-		if (instruction.includes('7')) word = word.replace(word[0], word[0].toUpperCase())
-		if (instruction.includes('8')) word = [ ...word ].reverse().join('')
-		if (instruction.includes('0')) word = word.repeat(+instruction.substring(instruction.search(/(?<=0)/g)))
+		if (instruction.includes('7'))
+			word = word.replace(word[0], word[0].toUpperCase())
+		if (instruction.includes('8')) word = [...word].reverse().join('')
+		if (instruction.includes('0'))
+			word = word.repeat(+instruction.substring(instruction.search(/(?<=0)/g)))
 
 		translation += word
 	}
@@ -314,7 +338,7 @@ function sumOddAndEven(arr) {
 			sums[isOdd(number)] += number
 			return sums
 		},
-		[ 0, 0 ]
+		[0, 0]
 	)
 }
 // console.log(sumOddAndEven([ 1, 2, 3, 4, 5, 6 ]))

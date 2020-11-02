@@ -9,14 +9,15 @@ const factorial = n => (n ? n * factorial(--n) : 1)
 //0 und 1 vertauschen
 //flip = y => 1 - y;
 //flip = y => Math.abs(--y);
-const flip = y => [ 1, 0 ][y] //gibt Wert aus Array an y-ter Position
+const flip = y => [1, 0][y] //gibt Wert aus Array an y-ter Position
 /* console.log(flip(1));
 console.log(flip(0));
 console.log(flip(-1));
 console.log(flip(2)); */
 
 //Winkelqualität für fehlenden Dreieckswinkel
-const missingAngle = (angle1, angle2) => [ 'acute', 'right', 'obtuse' ][Math.sign(180 - angle1 - angle2 - 90) + 1]
+const missingAngle = (angle1, angle2) =>
+	['acute', 'right', 'obtuse'][Math.sign(180 - angle1 - angle2 - 90) + 1]
 //console.log(missingAngle(45, 45));
 
 //Difference of Max and Min Numbers in Array
@@ -43,7 +44,7 @@ console.log(sumOfCubes([])); */
 /**Add up the Numbers from a Single Number */
 const addUp = num => {
 	return num ? num + addUp(--num) : 0
-	return num * (num + 1) / 2
+	return (num * (num + 1)) / 2
 }
 
 /** Absolute Sum*/
@@ -96,13 +97,13 @@ const factorGroup = num => (Number.isInteger(Math.sqrt(num)) ? 'odd' : 'even')
 
 /** Basic Calculator
  *  Object with all operators and the input as selector.
-*/
+ */
 const calculator = (num1, operator, num2) => {
 	return {
-		'+' : num1 + num2,
-		'-' : num1 - num2,
-		'*' : num1 * num2,
-		'/' : num2 ? num1 / num2 : 'Cannot divide by 0!',
+		'+': num1 + num2,
+		'-': num1 - num2,
+		'*': num1 * num2,
+		'/': num2 ? num1 / num2 : 'Cannot divide by 0!',
 	}[operator]
 }
 // console.log("Result: ", calculator(2, "+", 2));
@@ -118,7 +119,10 @@ largestSwap = num => num / 10 > num % 10
 // console.log(largestSwap(33))
 
 function mean(num) {
-	return `${num}`.split('').reduce((sum, digit) => sum + +digit, 0) / `${num}`.split('').length
+	return (
+		`${num}`.split('').reduce((sum, digit) => sum + +digit, 0) /
+		`${num}`.split('').length
+	)
 }
 // console.log(mean(123))
 
@@ -136,8 +140,8 @@ function jazzify(arr) {
 // console.log(jazzify([ 'F', 'E7', 'A7', 'Ab', 'Gm7', 'C7' ]))
 
 function sumDigProd(...nums) {
-	let sum = [ ...nums ].reduce((sum, num) => sum + num, 0) //sum as number
-	arrayfy = sum => [ ...('' + sum) ].map(digit => +digit) //array with digits
+	let sum = [...nums].reduce((sum, num) => sum + num, 0) //sum as number
+	arrayfy = sum => [...('' + sum)].map(digit => +digit) //array with digits
 	sum = arrayfy(sum)
 	while (sum.length > 1) {
 		sum = sum.reduce((product, digit) => product * digit, 1)
@@ -158,7 +162,7 @@ function isPowerful(num) {
 			remainder /= i
 		}
 	}
-	factors = [ ...new Set(factors) ]
+	factors = [...new Set(factors)]
 
 	return factors.every(factor => num % factor ** 2 == 0)
 }
@@ -173,10 +177,11 @@ function calculate(num1, num2, op) {
 
 /** Pythagorean Triplet*/
 function isTriplet(n1, n2, n3) {
-	let input = [ n1, n2, n3 ].sort((a, b) => a - b)
+	let input = [n1, n2, n3].sort((a, b) => a - b)
 	return input[2] ** 2 === input[0] ** 2 + input[1] ** 2
 }
-const isTriplet2 = (...sides) => sides.sort((a, b) => a - b).pop() === Math.hypot(...sides)
+const isTriplet2 = (...sides) =>
+	sides.sort((a, b) => a - b).pop() === Math.hypot(...sides)
 // console.log(isTriplet(3, 4, 5))
 // console.log(isTriplet(1, 2, 3))
 // console.log(isTriplet(13, 5, 12))
@@ -185,13 +190,34 @@ const isTriplet2 = (...sides) => sides.sort((a, b) => a - b).pop() === Math.hypo
 function bitwiseAND(n1, n2) {
 	return n1 & n2
 }
-
 function bitwiseOR(n1, n2) {
 	return n1 | n2
 }
-
 function bitwiseXOR(n1, n2) {
 	return n1 ^ n2
 }
+// console.log(bitwiseXOR(6, 23))
 
-console.log(bitwiseXOR(6, 23))
+/** Geometry 1: Length of Line Segment*/
+function lineLength([x1, y1], [x2, y2]) {
+	return +Math.hypot(x2 - x1, y2 - y1).toFixed(2)
+}
+// console.log(lineLength([15, 7], [22, 11]))
+// console.log(lineLength([0, 0], [0, 0]))
+// console.log(lineLength([0, 0], [1, 1]))
+
+/**Excel Sheet Column Number */
+function titleToNumber(s) {
+	return [...s].reduce((acc, curr) => acc * 26 + curr.charCodeAt(0) - 64, 0)
+}
+// console.log(titleToNumber('A'))
+// console.log(titleToNumber('R'))
+// console.log(titleToNumber('Z'))
+// console.log(titleToNumber('AB'))
+
+/**Count Ones in Binary Representation of Integer */
+function countOnes(i) {
+	return [...i.toString(2)].filter(zahl => zahl === '1').length
+}
+console.log(countOnes(100))
+console.log(countOnes(999))

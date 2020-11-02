@@ -1,5 +1,6 @@
 /**Get Sum of People's Budget */
-const getBudgets = arr => arr.reduce((total, person) => total + person.budget, 0)
+const getBudgets = arr =>
+	arr.reduce((total, person) => total + person.budget, 0)
 
 /* console.log(getBudgets([
   { name: "John", age: 21, budget: 23000 },
@@ -15,7 +16,7 @@ const findOccurrences = (str, char) => {
 		.reduce(
 			(o, k) => ({
 				...o,
-				[k] : [ ...k ] //assigning the object elements
+				[k]: [...k] //assigning the object elements
 					.filter(v => v === char.toLowerCase()).length,
 			}),
 			{}
@@ -27,7 +28,7 @@ const findOccurrences_2 = (str, char) => {
 		(o, key) =>
 			Object.assign(o, {
 				//assigning the object elements
-				[key] : [ ...key ].filter(v => v === char.toLowerCase()).length,
+				[key]: [...key].filter(v => v === char.toLowerCase()).length,
 			}),
 		{}
 	)
@@ -40,7 +41,7 @@ const findOccurrences_3 = (str, char) => {
 			//ECMAscript2019 Object.fromEntries()
 			//building an array of word - occurrence pairs
 			word,
-			[ ...word ].filter(letter => letter === char.toLowerCase()).length,
+			[...word].filter(letter => letter === char.toLowerCase()).length,
 		])
 	)
 	return object
@@ -69,14 +70,16 @@ function afterNYears(names, n) {
 
 /**International Greetings */
 const GUEST_LIST = {
-	Randy  : 'Germany',
-	Karla  : 'France',
-	Wendy  : 'Japan',
-	Norman : 'England',
-	Sam    : 'Argentina',
+	Randy: 'Germany',
+	Karla: 'France',
+	Wendy: 'Japan',
+	Norman: 'England',
+	Sam: 'Argentina',
 }
 const greeting = name =>
-	!GUEST_LIST.hasOwnProperty(name) ? "Hi! I'm a guest." : `Hi! I'm ${name}, and I'm from ${GUEST_LIST[name]}.`
+	!GUEST_LIST.hasOwnProperty(name)
+		? "Hi! I'm a guest."
+		: `Hi! I'm ${name}, and I'm from ${GUEST_LIST[name]}.`
 // console.log('greeting', greeting('Randy'))
 // console.log('greeting', greeting('Monti'))
 
@@ -109,7 +112,7 @@ const colorConversion = input => {
 	if (typeof input === 'string') {
 		//HEX => RGB
 		if (!/^#[0-9a-f]{6}$/.test(input)) return 'Not valid input'
-		const [ r, g, b ] = input.match(/[0-9a-f]{2}/g).map(h => parseInt(h, 16))
+		const [r, g, b] = input.match(/[0-9a-f]{2}/g).map(h => parseInt(h, 16))
 		return { r, g, b }
 	} else {
 		//RGB => HEX
@@ -123,7 +126,7 @@ const colorConversion = input => {
 // console.log(colorConversion({ r: 9, g: 200, b: 125 }))
 
 /**Remove Repeated Letters*/
-const unrepeated = str => [ ...new Set(str) ].join('')
+const unrepeated = str => [...new Set(str)].join('')
 // console.log('unrepeated', unrepeated('altwaff test'))
 // console.log('unrepeated', unrepeated('hello'))
 // console.log('unrepeated', unrepeated('WWE!!!'))
@@ -138,16 +141,18 @@ var { first = 'John', last = 'Doe', alias: nickname = 'JD' } = objIV
 
 /**ES6: Destructuring Objects V */
 const user = {
-	first      : 'James',
-	last       : 'Baker',
-	bestFriend : {
-		first : 'Scott',
-		last  : 'Parkman',
+	first: 'James',
+	last: 'Baker',
+	bestFriend: {
+		first: 'Scott',
+		last: 'Parkman',
 	},
 }
 function bio({ first, last, bestFriend: { first: best } }) {
 	// Do not edit the return statement below
-	return 'Hi, my name is ' + first + ' ' + last + '. ' + best + ' is my best friend.'
+	return (
+		'Hi, my name is ' + first + ' ' + last + '. ' + best + ' is my best friend.'
+	)
 }
 // console.log(bio(user))
 
@@ -179,7 +184,7 @@ let users = [
 	{ name: 'Jeremy', email: 'jeremy@example.com' },
 	{ name: 'Jacob', email: 'jacob@example.com' },
 ]
-let [ , , { name: thirdUser } ] = users
+let [, , { name: thirdUser }] = users
 // console.log(thirdUser)
 
 let names = []
@@ -189,7 +194,8 @@ for (const { name } of users) {
 // console.log(names)
 
 /** Online Shopping*/
-const freeShipping = order => Object.values(order).reduce((total, item) => (total += item)) >= 50
+const freeShipping = order =>
+	Object.values(order).reduce((total, item) => (total += item)) >= 50
 // console.log('freeShipping', freeShipping({ Shampoo: 5.99, 'Rubber Ducks': 15.99 }))
 // console.log('freeShipping', freeShipping({ Monopoly: 11.99, 'Secret Hitler': 35.99, Bananagrams: 13.99 }))
 
@@ -212,7 +218,11 @@ const test = zahlen => zahlen.reduce((a, b) => ((a = a + b), a), 0)
 // console.log(test([1, 2, 3]))
 
 /**Edabit Experience Points */
-const getXP = obj => `${Object.values(obj).reduce((sum, v, i) => (sum += v * [ 5, 10, 20, 40, 80 ][i]), 0)}XP`
+const getXP = obj =>
+	`${Object.values(obj).reduce(
+		(sum, v, i) => (sum += v * [5, 10, 20, 40, 80][i]),
+		0
+	)}XP`
 // console.log(
 // 	'2055XP',
 // 	getXP({
@@ -232,16 +242,17 @@ const isObject = value => value instanceof Object
 
 /**Planetary Weight Converter */
 const planetGrav = {
-	Mercury : 3.7,
-	Venus   : 8.87,
-	Earth   : 9.81,
-	Mars    : 3.711,
-	Jupiter : 24.79,
-	Saturn  : 10.44,
-	Uranus  : 8.69,
-	Neptune : 11.15,
+	Mercury: 3.7,
+	Venus: 8.87,
+	Earth: 9.81,
+	Mars: 3.711,
+	Jupiter: 24.79,
+	Saturn: 10.44,
+	Uranus: 8.69,
+	Neptune: 11.15,
 }
-const spaceWeights = (planetA, weight, planetB) => +(weight * planetGrav[planetB] / planetGrav[planetA]).toFixed(2)
+const spaceWeights = (planetA, weight, planetB) =>
+	+((weight * planetGrav[planetB]) / planetGrav[planetA]).toFixed(2)
 // console.log('0.38 => ', spaceWeights('Earth', 1, 'Mars'))
 // console.log('2.53 => ', spaceWeights('Earth', 1, 'Jupiter'))
 // console.log('1.14 => ', spaceWeights('Earth', 1, 'Neptune'))
@@ -249,7 +260,11 @@ const spaceWeights = (planetA, weight, planetB) => +(weight * planetGrav[planetB
 /**Leaderboard Sort */
 
 const leaderboards = users =>
-	users.sort((a, b) => ((trueScore = u => u.score + 2 * u.reputation), trueScore(b) - trueScore(a)))
+	users.sort(
+		(a, b) => (
+			(trueScore = u => u.score + 2 * u.reputation), trueScore(b) - trueScore(a)
+		)
+	)
 // console.log(
 // 	'leaderboards',
 // 	leaderboards([
@@ -260,15 +275,19 @@ const leaderboards = users =>
 // )
 
 /**Paint the Walls */
-const time = (obj, people, wall) => obj.minutes * obj.people / obj.walls * wall / people
+const time = (obj, people, wall) =>
+	(((obj.minutes * obj.people) / obj.walls) * wall) / people
 let rate = {
-	people  : 10,
-	walls   : 10,
-	minutes : 22,
+	people: 10,
+	walls: 10,
+	minutes: 22,
 }
 // console.log('time', time(rate, 14, 14))
 
-let drinks = [ { name: 'lemonade', price: 50 }, { name: 'lime', price: 10 } ]
+let drinks = [
+	{ name: 'lemonade', price: 50 },
+	{ name: 'lime', price: 10 },
+]
 /**Drink Sorting */
 const sortDrinkByPrice = drinks => drinks.sort((a, b) => a.price - b.price)
 // console.log('', sortDrinkByPrice(drinks))
@@ -296,3 +315,41 @@ function getStudentTopNotes(students) {
 // 		},
 // 	])
 // )
+
+/**A Knacpsack */
+//https://edabit.com/challenge/uqwmC7RJF98xr3TiD?tab=comments&commentId=SZNmbdGPJGQdpYYot
+function knapsack(capacity, getItems) {
+	let weight = 0
+	let value = 0
+	let items = []
+	for (let item of getItems) {
+		while (items.length + 1 <= capacity) {
+			weight += item.weight
+			value += item.value
+			items.push(item)
+		}
+	}
+	return {
+		capacity,
+		items,
+		weight,
+		value,
+	}
+}
+var items = [
+	{ name: 'desk lamp', weight: 2, value: 12 },
+	{ name: 'beach towel', weight: 1, value: 10 },
+	{ name: 'textbook', weight: 3, value: 20 },
+	{ name: 'wall clock', weight: 2, value: 15 },
+	{ name: 'frozen dinners', weight: 10, value: 50 },
+	{ name: 'tablet', weight: 7, value: 1400 },
+	{ name: 'smartphone', weight: 1, value: 200 },
+	{ name: 'paper', weight: 2, value: 5 },
+	{ name: 'laser printer', weight: 25, value: 400 },
+	{ name: 'shoes', weight: 1, value: 79 },
+	{ name: 'medicine', weight: 1, value: 17 },
+	{ name: 'decorative cushion', weight: 1, value: 11 },
+	{ name: 'gold necklace', weight: 1, value: 2500 },
+	{ name: 'toaster oven', weight: 5, value: 129 },
+]
+console.log(knapsack(4, items))

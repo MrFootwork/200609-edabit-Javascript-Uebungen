@@ -10,22 +10,22 @@ function repeat(item, times) {
 
 //Convert Number to String of Dashes
 //const GoArray = num => "-".repeat(num);
-const GoArray = (num) => Array(num).fill('-').join('')
+const GoArray = num => Array(num).fill('-').join('')
 // console.log(GoArray(5));
 
 //Largest number
 /* findLargestNum([4, 5, 1, 3]) ➞ 5
 findLargestNum([300, 200, 600, 150]) ➞ 600
 findLargestNum([1000, 1001, 857, 1]) ➞ 1001 */
-const findLargestNum = (arr) => Math.max(...arr)
+const findLargestNum = arr => Math.max(...arr)
 //console.log(findLargestNum([4, 5, 1, 3]));
 
 //Return the Four Letter Strings
-const isFourLetters = (arr) => arr.filter((word) => word.length == 4)
+const isFourLetters = arr => arr.filter(word => word.length == 4)
 //console.log(isFourLetters(["Kangaroo", "Bear", "Fox"]));
 
 //Remove NULL from an Array
-const removeNull = (arr) =>
+const removeNull = arr =>
 	//arr.filter(v => v !== null);
 	arr.filter(Boolean)
 /* console.log(removeNull(["a", null, "b", null]));
@@ -35,11 +35,11 @@ console.log(removeNull([7, 8, null, 9])); */
 //Filter by Digit Length
 const filterDigitLength = (arr, num) =>
 	//arr.filter(number => Math.floor(Math.log10(number)) + 1 == num);
-	arr.filter((number) => String(number).length === num)
+	arr.filter(number => String(number).length === num)
 //console.log(filterDigitLength([1, 8, 3, 6, 0, 1], 1));
 
 //alle Elemente erweitern
-const multiplyByLength = (arr) => arr.map((x) => x * arr.length)
+const multiplyByLength = arr => arr.map(x => x * arr.length)
 //console.log(multiplyByLength([2, 3, 1, 0]));
 
 //Calculate Determinant of a 2x2 Matrix
@@ -58,19 +58,19 @@ const checkEquals = (arr1, arr2) =>
  * @param {integer} num
  * @returns an array with num even numbers
  */
-const findEvenNums = (num) =>
-	[...Array(num).keys()].map((n) => ++n).filter((n) => !(n % 2))
+const findEvenNums = num =>
+	[...Array(num).keys()].map(n => ++n).filter(n => !(n % 2))
 //[...Array(num).keys()] constructs num elements with iterators
 //console.log(findEvenNums(8));
 
 /**Next Element in an Arithmetic Sequence
  * @param {array} arr An array in an arithmetic sequence.
  */
-const nextElement = (arr) => 2 * arr[arr.length - 1] - arr[arr.length - 2]
+const nextElement = arr => 2 * arr[arr.length - 1] - arr[arr.length - 2]
 //console.log(nextElement([-5, -6, -7]));
 
 //Return the First and Last Elements in an Array
-const firstLast = (arr) => [arr.shift(), arr.pop()]
+const firstLast = arr => [arr.shift(), arr.pop()]
 //console.log(firstLast(["edabit", 13, null, false, true]));
 
 /**Exists a Number Higher?
@@ -85,33 +85,33 @@ console.log(existsHigher([1, 2, 3, 4, 5], 8)); */
 /**Date Format:
  * transforms dates from MM/DD/YYYY to YYYYDDMM
  */
-const formatDate = (date) => date.split('/').reverse().join('')
+const formatDate = date => date.split('/').reverse().join('')
 //console.log("formatDate -> formatDate", formatDate("11/12/2019"));
 
 /**Eliminate Odd Numbers within an Array:
  * deleting the array elements from odd numbers
  */
-const noOdds = (arr) => arr.filter((num) => !(num % 2))
+const noOdds = arr => arr.filter(num => !(num % 2))
 //console.log("noOdds -> noOdds", noOdds([1, 2, 3, 4, 5, 6, 7, 8]));
 
 /**Negate the Array of Numbers:
  * array with negated signs of each elements
  */
-const negate = (arr) => arr.map((num) => -num)
+const negate = arr => arr.map(num => -num)
 //console.log("negate -> negate", negate([-1, 2, -3, 4]));
 
 /**Check if a String Contains only Identical Characters*/
-const isIdentical = (wordToCheck) => new Set(wordToCheck).size == 1
+const isIdentical = wordToCheck => new Set(wordToCheck).size == 1
 /* console.log("isIdentical -> isIdentical", isIdentical("aabaaa"));
 console.log("isIdentical -> isIdentical", isIdentical("aaaaa")); */
 
 /**Is the Number a Repdigit? */
-const isRepdigit = (num) => new Set(num.toString()).size == 1
+const isRepdigit = num => new Set(num.toString()).size == 1
 /* console.log("isRepdigit", isRepdigit(66));
 console.log("isRepdigit", isRepdigit(-66)); */
 
 /**Index Shuffle */
-const indexShuffle = (str) =>
+const indexShuffle = str =>
 	[...str]
 		.filter((l, index) => !(index % 2))
 		.concat([...str].filter((l, index) => index % 2))
@@ -127,15 +127,15 @@ function sliceSum(arr, n) {
 console.log("sliceSum -> sliceSum", sliceSum([4, 2, 5, 7], 0)); */
 
 /** Secret Society*/
-const societyName = (friends) =>
+const societyName = friends =>
 	friends
-		.map((name) => name[0])
+		.map(name => name[0])
 		.sort()
 		.join('')
 // console.log(societyName(["Adam", "Sarah", "Malcolm"]));
 
 /** How Much is True?*/
-const countTrue = (arr) => arr.filter(Boolean).length
+const countTrue = arr => arr.filter(Boolean).length
 // console.log(countTrue([true, false, false, true, false]));
 
 /** Concatenate Variable Number of Input Arrays*/
@@ -157,9 +157,9 @@ const changeEnough = (change, amountDue) =>
  * @returns amount of identical arrays
  */
 function countIdenticalArrays(arr1, arr2, arr3, arr4) {
-	let args = Array.from(arguments).map((x) => x.join('')),
+	let args = Array.from(arguments).map(x => x.join('')),
 		set = Array.from(new Set(args)),
-		num = set.map((x) => args.filter((c) => c === x).length),
+		num = set.map(x => args.filter(c => c === x).length),
 		max = Math.max(...num)
 	return max === 1 ? 0 : max
 }
@@ -170,14 +170,14 @@ function countIdenticalArrays(arr1, arr2, arr3, arr4) {
  * @param array with numbers
  * @returns {Boolean} true, if amount of positive unique numbers > amount of negative unique numbers
  */
-const isPositiveDominant = (a) =>
-	[...new Set(a)].filter((x) => x > 0).length >
-	[...new Set(a)].filter((x) => x < 0).length
+const isPositiveDominant = a =>
+	[...new Set(a)].filter(x => x > 0).length >
+	[...new Set(a)].filter(x => x < 0).length
 
 // console.log("isPositiveDominant? ", isPositiveDominant([1, 1, 1, 1, -3, -4]));
 // console.log("isPositiveDominant? ", isPositiveDominant([5, 99, 832, -3, -4]));
 
-const objectToArray = (obj) =>
+const objectToArray = obj =>
 	//Object.keys(obj).map(key=>[key, obj[key]])
 	Object.entries(obj)
 /* console.log(
@@ -190,12 +190,12 @@ const objectToArray = (obj) =>
 
 /**Return the Objects Keys and Values */
 function keysAndValues(obj) {
-	return [Object.keys(obj), Object.keys(obj).map((x) => obj[x])]
+	return [Object.keys(obj), Object.keys(obj).map(x => obj[x])]
 }
 // console.log(keysAndValues({ a: "Apple", b: "Microsoft", c: "Google" }));
 
 /** Converting Objects to Arrays*/
-const toArray = (obj) => Object.entries(obj)
+const toArray = obj => Object.entries(obj)
 // console.log(toArray({ shrimp: 15, tots: 12 }));
 
 /**Fix the Error: Flattening an Array (Debugging) */
@@ -218,12 +218,12 @@ const arrayOfMultiples = (num, length) =>
 // console.log(arrayOfMultiples(7, 5));
 
 /**Factor Chain */
-const factorChain = (arr) => arr.slice(1).every((num, i) => num % arr[i] === 0)
+const factorChain = arr => arr.slice(1).every((num, i) => num % arr[i] === 0)
 // console.log(factorChain([1, 2, 4, 8, 16, 32]));
 // console.log(factorChain([2, 4, 6, 7, 12]));
 
 /**Sastry Numbers */
-const isSastry = (number) => !(`${number}${number + 1}` ** 0.5 % 1)
+const isSastry = number => !(`${number}${number + 1}` ** 0.5 % 1)
 // console.log("isSastry", isSastry(106755));
 
 /**Possible to Concatenate to Form Target Array?*/
@@ -240,7 +240,7 @@ const canConcatenate = (arr, target) =>
 ); */
 
 /**Oddish vs. Evenish */
-const oddishOrEvenish = (num) =>
+const oddishOrEvenish = num =>
 	`${num}`.split('').reduce((sum, str) => sum + 1 * str, 0) % 2 == 0
 		? 'Evenish'
 		: 'Oddish'
@@ -248,9 +248,9 @@ const oddishOrEvenish = (num) =>
 // console.log("oddishOrEvenish Evenish =>", oddishOrEvenish(4433));
 
 /**Cowboy Shootout */
-const rogerShots = (arr) =>
+const rogerShots = arr =>
 	// arr.reduce((seconds, shot) => seconds + 0.5 * (shot === 'Bang!' || shot === 'BangBang!'), 0)
-	arr.filter((el) => el === 'Bang!' || el === 'BangBang!').length * 0.5
+	arr.filter(el => el === 'Bang!' || el === 'BangBang!').length * 0.5
 // console.log('3', rogerShots([ 'Bang!', 'Bang!', 'Bang!', 'Bang!', 'Bang!', 'Bang!' ]))
 // console.log('2.5', rogerShots([ 'Bang!', 'Bang!', 'Bang!', 'Bang!', 'BangBang!' ]))
 // console.log(
@@ -283,7 +283,7 @@ ice8 = new IceCream('Plain', 34)
 ice9 = new IceCream('Plain', 81)
 ice10 = new IceCream('Vanilla', 12)
 
-const sweetestIcecream = (arr) => {
+const sweetestIcecream = arr => {
 	let sweeties = {
 		Plain: 0,
 		Vanilla: 5,
@@ -291,21 +291,21 @@ const sweetestIcecream = (arr) => {
 		Strawberry: 10,
 		Chocolate: 10,
 	}
-	return Math.max(...arr.map((ice) => sweeties[ice.flavor] + ice.numSprinkles))
+	return Math.max(...arr.map(ice => sweeties[ice.flavor] + ice.numSprinkles))
 }
 // console.log(sweetestIcecream([ ice1, ice2, ice3, ice4, ice5 ]))
 
-const isSpecialArray = (arr) => arr.every((v, i) => v % 2 == i % 2)
+const isSpecialArray = arr => arr.every((v, i) => v % 2 == i % 2)
 // console.log('', isSpecialArray([ 2, 7, 5, 9, 6, 1, 6, 3 ]))
 // console.log('', isSpecialArray([ 2, 7, 4, 9, 6, 1, 6, 3 ]))
 
 /**Alternate Sort */
 function alternateSort(arr) {
 	const letters = arr
-		.filter((str) => typeof str == 'string')
+		.filter(str => typeof str == 'string')
 		.sort((a, b) => (b.toLowerCase() < a.toLowerCase() ? 1 : -1))
 	const numbers = arr //
-		.filter((num) => typeof num == 'number')
+		.filter(num => typeof num == 'number')
 		.sort((a, b) => a - b)
 	let result = []
 	arr.forEach((_, i) =>
@@ -320,7 +320,7 @@ function alternateSort(arr) {
 function totalVolume(...boxes) {
 	return boxes.reduce((total, [l, w, h]) => total + l * w * h, 0)
 	return boxes
-		.map((box) => box.reduce((boxVolume, edge) => boxVolume * edge, 1))
+		.map(box => box.reduce((boxVolume, edge) => boxVolume * edge, 1))
 		.reduce((totalVolume, boxVolume) => totalVolume + boxVolume, 0)
 }
 // console.log(totalVolume([ 4, 2, 4 ], [ 3, 3, 3 ], [ 1, 1, 2 ], [ 2, 1, 1 ]))
@@ -365,7 +365,7 @@ function starRating(arr) {
 
 /**Peeling off the Outer Layers */
 function peelLayerOff(arr) {
-	return arr.slice(1, -1).map((column) => column.slice(1, -1))
+	return arr.slice(1, -1).map(column => column.slice(1, -1))
 }
 // console.log(
 // 	peelLayerOff([
@@ -390,7 +390,7 @@ function findNemo(sentence) {
 /**Finding Common Elements */
 function commonElements(arr1, arr2) {
 	//JS methods
-	return [...new Set(arr1.filter((element) => arr2.includes(element)))]
+	return [...new Set(arr1.filter(element => arr2.includes(element)))]
 
 	//in-place operation
 	let pointer1 = 0
@@ -483,7 +483,7 @@ function toBinary(num) {
 function sumOfEvens(arr) {
 	return arr //
 		.flat()
-		.filter((num) => !(num % 2))
+		.filter(num => !(num % 2))
 		.reduce((sum, even) => sum + even, 0)
 
 	//O(n)
@@ -542,7 +542,7 @@ function bitwiseIndex(arr) {
 		: { [`@${['even', 'odd'][k & 1]} index ${k}`]: x }
 
 	//my solution
-	const isEven = (num) => Math.floor(num / 2) * 2 === num
+	const isEven = num => Math.floor(num / 2) * 2 === num
 	let intMax = 0
 	let iMax = -1
 	let found = false
@@ -584,6 +584,8 @@ function zipIt(women, men) {
 	return pairs
 }
 
-console.log(zipIt(['Elise', 'Mary'], ['John', 'Rick']))
-console.log(zipIt(['Ana', 'Amy', 'Lisa'], ['Bob', 'Josh']))
-console.log(zipIt(['Ana', 'Amy', 'Lisa'], ['Bob', 'Josh', 'Tim']))
+// console.log(zipIt(['Elise', 'Mary'], ['John', 'Rick']))
+// console.log(zipIt(['Ana', 'Amy', 'Lisa'], ['Bob', 'Josh']))
+// console.log(zipIt(['Ana', 'Amy', 'Lisa'], ['Bob', 'Josh', 'Tim']))
+
+console.log([1, 2, 3].indexOf(0))
