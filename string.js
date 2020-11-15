@@ -455,3 +455,14 @@ function bbqSkewers(grill) {
 // 		'--o---o-----',
 // 	])
 // )
+
+/**Get the Century */
+function century(year) {
+	const century = Math.ceil(year / 100)
+	const ordinalSuffix = century > 20 ? 'st' : 'th'
+	return `${century}${ordinalSuffix} century`
+}
+// console.log(century(1756))
+// console.log(century(1000))
+// console.log(century(1001))
+// console.log(century(2005))

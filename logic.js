@@ -30,10 +30,11 @@ const isTruthy = input => (input ? 1 : 0)
 /* console.log(firstArg(1, 2, 3));
 console.log(lastArg(2, 5, 9, 10)); */
 
-/**FizzBuzz Interview Question: 
+/**FizzBuzz Interview Question:
  * crazy things are happening here!
  */
-const FizzBuzz = num => (num % 3 ? '' : 'Fizz') + (num % 5 ? '' : 'Buzz') || `${num}`
+const FizzBuzz = num =>
+	(num % 3 ? '' : 'Fizz') + (num % 5 ? '' : 'Buzz') || `${num}`
 /* console.log("FizzBuzz -> FizzBuzz", FizzBuzz(3));
 console.log("FizzBuzz -> FizzBuzz", FizzBuzz(5));
 console.log("FizzBuzz -> FizzBuzz", FizzBuzz(15));
@@ -82,7 +83,7 @@ const sortByLength = arr => arr.sort((a, b) => a.length - b.length)
  * @param {integer} n
  * @returns {integer}
  */
-const squareDigits = n => +[ ...String(n) ].map(x => x * x).join('')
+const squareDigits = n => +[...String(n)].map(x => x * x).join('')
 //console.log("squareDigits", squareDigits(1234));
 
 /**Matchstick Houses
@@ -106,13 +107,16 @@ const findOdd = arr =>
 const diceGame = arr =>
 	/* if (arr.find(pair => pair[0] == pair[1])) return 0;
   return arr.reduce((sum, wurf) => sum + wurf[0] + wurf[1], 0); */
-	arr.some(pair => pair[0] == pair[1]) ? 0 : arr.flat().reduce((total, point) => total + point, 0)
+	arr.some(pair => pair[0] == pair[1])
+		? 0
+		: arr.flat().reduce((total, point) => total + point, 0)
 /* console.log("diceGame", diceGame([[1, 1], [5, 6], [6, 4]]));
 console.log("diceGame", diceGame([[1, 2], [3, 4], [5, 6]])); */
 
 /**Integer in Range?
  */
-const intWithinBounds = (n, lower, upper) => n >= lower && n < upper && Number.isInteger(n)
+const intWithinBounds = (n, lower, upper) =>
+	n >= lower && n < upper && Number.isInteger(n)
 // console.log(intWithinBounds(3, 1, 9));
 // console.log(intWithinBounds(4.5, 3, 8));
 // console.log(intWithinBounds(6, 1, 6));
@@ -133,14 +137,14 @@ function shouldServeDrinks(age, onBreak) {
 /**Track the Robot (Part 2) */
 const trackRobot = (...steps) =>
 	steps.reduce(
-		([ x, y ], dist, i) =>
+		([x, y], dist, i) =>
 			({
-				0 : [ x, y + dist ],
-				1 : [ x + dist, y ],
-				2 : [ x, y - dist ],
-				3 : [ x - dist, y ],
+				0: [x, y + dist],
+				1: [x + dist, y],
+				2: [x, y - dist],
+				3: [x - dist, y],
 			}[i % 4]),
-		[ 0, 0 ]
+		[0, 0]
 	)
 // console.log(trackRobot(20, 30, 10, 40))
 // console.log(trackRobot())
@@ -152,8 +156,8 @@ const trackRobot = (...steps) =>
 // (w,h) -- dimensions of the hole
 function doesBrickFit(a, b, c, w, h) {
 	const s = (a, b) => a - b
-	const brick = [ a, b, c ].sort(s)
-	const hole = [ w, h ].sort(s)
+	const brick = [a, b, c].sort(s)
+	const hole = [w, h].sort(s)
 	return brick[0] <= hole[0] && brick[1] <= hole[1]
 
 	return (
@@ -193,7 +197,10 @@ function primeFactorize(num) {
 /**Strong Password Checker */
 function strongPasswordChecker(str) {
 	const repeats = str.match(/(.)\1{2,}/g) || []
-	const repfix = repeats.reduce((a, b) => a + Math.floor(Math.min(20, b.length) / 3), 0)
+	const repfix = repeats.reduce(
+		(a, b) => a + Math.floor(Math.min(20, b.length) / 3),
+		0
+	)
 	const typefix = 3 - /[a-z]/g.test(str) - /[A-Z]/g.test(str) - /\d/g.test(str)
 	const underfix = Math.max(8 - str.length, 0)
 	const overfix = Math.max(str.length - 20, 0)
@@ -248,10 +255,10 @@ function repeat(str, nb) {
 
 /**No Good Numbers */
 function howBad(num) {
-	let population = [ ...num.toString(2) ].filter(n => +n).length
+	let population = [...num.toString(2)].filter(n => +n).length
 	let descriptors = []
 
-	descriptors.push([ 'Evil', 'Odious' ][population % 2])
+	descriptors.push(['Evil', 'Odious'][population % 2])
 	if (isPrime(population)) descriptors.push('Pernicious')
 
 	function isPrime(num) {
@@ -281,3 +288,16 @@ function primeInRange(n1, n2) {
 }
 // console.log(primeInRange(10, 15))
 // console.log(primeInRange(62, 66))
+
+/**Find the Bugs: Returning Valid Prices */
+function hasValidPrice(product) {
+	return (
+		(product && product.price >= 0 && typeof product.price === 'number') ||
+		false
+	)
+}
+// console.log(hasValidPrice({ product: 'Milk', price: 1.5 }))
+// console.log(hasValidPrice({ product: 'Cheese', price: -1 }))
+// console.log(hasValidPrice({ product: 'Eggs', price: 0 }))
+// console.log(hasValidPrice())
+// console.log(hasValidPrice({ product: 'Cerials', price: '3.0' }))

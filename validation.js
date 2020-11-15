@@ -7,7 +7,7 @@ function isOmnipresent(arr, val) {
 
 /**Pythagorean Triplet*/
 function isTriplet(n1, n2, n3) {
-	;[ a, b, h ] = [ n1, n2, n3 ].sort((a, b) => a - b)
+	;[a, b, h] = [n1, n2, n3].sort((a, b) => a - b)
 	return a ** 2 + b ** 2 === h ** 2
 
 	return (
@@ -21,7 +21,7 @@ function isTriplet(n1, n2, n3) {
 
 /**Remove Duplicates from an Array */
 function removeDups(arr) {
-	return [ ...new Set(arr) ]
+	return [...new Set(arr)]
 }
 // console.log(removeDups([ 1, 0, 1, 0 ]))
 // console.log(removeDups([ 'John', 'Taylor', 'John' ]))
@@ -30,7 +30,9 @@ function removeDups(arr) {
 function apocalyptic(number) {
 	//2n = BigInt(2)
 	let index = `${BigInt(2) ** BigInt(number)}`.indexOf(666)
-	return index !== -1 ? `Repent! ${index} days until the Apocalypse!` : `Crisis averted. Resume sinning.`
+	return index !== -1
+		? `Repent! ${index} days until the Apocalypse!`
+		: `Crisis averted. Resume sinning.`
 }
 // console.log(apocalyptic(109))
 // console.log(apocalyptic(499))
@@ -84,9 +86,10 @@ function matchLastItem(arr) {
 // console.log(matchLastItem([ 8, 'thunder', true, '8thundertrue' ]))
 
 /**Xs and Os, Nobody Knows */
-function XO([ ...str ]) {
+function XO([...str]) {
 	//JS methods
-	const xoCount = (str, xo) => str.filter(char => char.toLowerCase() === xo).length
+	const xoCount = (str, xo) =>
+		str.filter(char => char.toLowerCase() === xo).length
 	return xoCount(str, 'x') === xoCount(str, 'o')
 
 	//in-place
