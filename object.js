@@ -352,4 +352,15 @@ var items = [
 	{ name: 'gold necklace', weight: 1, value: 2500 },
 	{ name: 'toaster oven', weight: 5, value: 129 },
 ]
-console.log(knapsack(4, items))
+// console.log(knapsack(4, items))
+
+/**Calculate the Total Price of Groceries */
+function getTotalPrice(groceries) {
+	return groceries.reduce((total, item) => total + item.price, 0)
+}
+// console.log(
+// 	getTotalPrice([
+// 		{ product: 'Milk', quantity: 1, price: 1.5 },
+// 		{ product: 'Cereals', quantity: 1, price: 2.5 },
+// 	])
+// )
