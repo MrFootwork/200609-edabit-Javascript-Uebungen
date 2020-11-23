@@ -466,3 +466,18 @@ function century(year) {
 // console.log(century(1000))
 // console.log(century(1001))
 // console.log(century(2005))
+
+/**Maximize the First Number */
+function maxPossible(n1, n2) {
+	const num1 = [...('' + n1)].map(digit => +digit)
+	const num2 = [...('' + n2)].map(digit => +digit)
+	let maxDigit = 0
+	const bigNum = num1.map(digit1 => {
+		maxDigit = Math.max(digit1, ...num2)
+		num2.splice(num2.indexOf(maxDigit), num2.includes(maxDigit))
+		return maxDigit
+	})
+	return +bigNum.join('')
+}
+// console.log(maxPossible(523, 76))
+// console.log(maxPossible(9328, 456))

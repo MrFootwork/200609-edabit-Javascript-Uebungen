@@ -356,11 +356,32 @@ var items = [
 
 /**Calculate the Total Price of Groceries */
 function getTotalPrice(groceries) {
-	return groceries.reduce((total, item) => total + item.price, 0)
+	return +groceries.reduce((total, item) => total + item.price, 0).toFixed(2)
 }
 // console.log(
 // 	getTotalPrice([
 // 		{ product: 'Milk', quantity: 1, price: 1.5 },
 // 		{ product: 'Cereals', quantity: 1, price: 2.5 },
 // 	])
+// )
+// console.log(
+// 	getTotalPrice([
+// 		{ product: 'Chocolate', quantity: 1, price: 0.1 },
+// 		{ product: 'Lollipop', quantity: 1, price: 0.2 },
+// 	])
+// )
+
+/**Get Students with Names and Top Notes */
+function getStudentsWithNamesAndTopNotes(students) {
+	let topNotes = []
+	students.forEach(student => {
+		topNotes.push({
+			name: student.name,
+			topNote: Math.max(...student.notes, 0),
+		})
+	})
+	return topNotes
+}
+// console.log(
+// 	getStudentsWithNamesAndTopNotes([{ name: 'John', notes: [3, 5, 4] }])
 // )
