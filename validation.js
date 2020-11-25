@@ -128,3 +128,27 @@ function doubleLetters(word) {
 // console.log(doubleLetters('yummy'))
 // console.log(doubleLetters('orange'))
 // console.log(doubleLetters('munchkin'))
+
+/**Self-Fescriptive Numbers */
+function selfDescriptive(n) {
+	const digits = [...BigInt(n).toString()].map(digit => +digit)
+	if (digits.length % 2) return false
+
+	let descriptiveDigits = []
+
+	for (let i = 0; i < digits.length; i += 2) {
+		const counter = digits[i]
+		const toBeCount = digits[i + 1]
+
+		descriptiveDigits.push(
+			counter === digits.filter(digit => toBeCount === digit).length
+		)
+	}
+	return digits
+	return descriptiveDigits
+	return descriptiveDigits.every(description => description)
+}
+console.log(selfDescriptive(22))
+console.log(selfDescriptive(3999))
+console.log(selfDescriptive(31331419))
+console.log(selfDescriptive(613223141526171819))
