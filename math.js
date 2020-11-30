@@ -219,5 +219,11 @@ function titleToNumber(s) {
 function countOnes(i) {
 	return [...i.toString(2)].filter(zahl => zahl === '1').length
 }
-console.log(countOnes(100))
-console.log(countOnes(999))
+// console.log(countOnes(100))
+// console.log(countOnes(999))
+
+/**Sum of Two Numbers (with a twist!)*/
+function sum2(a, b) {
+	return `${BigInt(a) + BigInt(b)}`
+}
+console.log(sum2('5125515215521515', '125261616261626'))
