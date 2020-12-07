@@ -481,3 +481,41 @@ function maxPossible(n1, n2) {
 }
 // console.log(maxPossible(523, 76))
 // console.log(maxPossible(9328, 456))
+
+/**Reverse String Without Affecting Special Characters */
+function revSpecstring(s) {
+	let regex = /[a-z]/gi
+	let batch = s.match(regex) || []
+	return s.replace(regex, () => batch.pop())
+}
+// function revSpecstring([...n]) {
+// 	for (let p1 = 0, p2 = n.length - 1; p1 < n.length; p1++, p2--) {
+// 		if (p1 > p2) break
+// 		if (!isLetter(n[p1])) {
+// 			++p2
+// 			continue
+// 		}
+// 		if (!isLetter(n[p2])) {
+// 			--p1
+// 			continue
+// 		}
+// 		;[n[p1], n[p2]] = [n[p2], n[p1]]
+// 	}
+// 	function isLetter(char) {
+// 		return (
+// 			(char.charCodeAt(0) >= 65 && char.charCodeAt(0) <= 90) ||
+// 			(char.charCodeAt(0) >= 97 && char.charCodeAt(0) <= 122)
+// 		)
+// 	}
+// 	return n.join('')
+// }
+//groß: 65-90
+//klein: 97-122
+console.log(revSpecstring('AFC#47GH$Ieu'))
+console.log(revSpecstring('guyhiuj1234!@#$%rtyhghu'))
+console.log(revSpecstring('12!@'))
+console.log(revSpecstring('abcd'))
+console.log(revSpecstring('abcde'))
+console.log(revSpecstring('a?cde'))
+console.log(revSpecstring('ab?de'))
+console.log(revSpecstring('abc?e'))

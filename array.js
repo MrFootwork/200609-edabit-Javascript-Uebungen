@@ -587,5 +587,17 @@ function zipIt(women, men) {
 // console.log(zipIt(['Elise', 'Mary'], ['John', 'Rick']))
 // console.log(zipIt(['Ana', 'Amy', 'Lisa'], ['Bob', 'Josh']))
 // console.log(zipIt(['Ana', 'Amy', 'Lisa'], ['Bob', 'Josh', 'Tim']))
+// console.log([1, 2, 3].indexOf(0))
 
-console.log([1, 2, 3].indexOf(0))
+/**Calculate the Total Price of Groceries */
+function getTotalPrice(groceries) {
+	return groceries.reduce((total, { quantity, price }) => {
+		return total + quantity * price
+	}, 0)
+}
+// console.log(
+// 	getTotalPrice([
+// 		{ product: 'Milk', quantity: 1, price: 1.5 },
+// 		{ product: 'Cereals', quantity: 1, price: 2.5 },
+// 	])
+// )
