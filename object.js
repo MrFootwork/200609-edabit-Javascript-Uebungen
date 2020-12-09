@@ -385,3 +385,22 @@ function getStudentsWithNamesAndTopNotes(students) {
 // console.log(
 // 	getStudentsWithNamesAndTopNotes([{ name: 'John', notes: [3, 5, 4] }])
 // )
+
+/**Burglary Series (01): Calculate Total Losses */
+
+function calculateLosses(obj) {
+	return Object.values(obj).reduce((sum, item) => sum + item, 0) || 'Lucky you!'
+}
+// console.log(
+// 	calculateLosses({
+// 		tv: 30,
+// 		skate: 20,
+// 		stereo: 50,
+// 	})
+// )
+// console.log(
+// 	calculateLosses({
+// 		painting: 20000,
+// 	})
+// )
+// console.log(calculateLosses({}))

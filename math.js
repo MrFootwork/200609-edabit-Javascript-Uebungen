@@ -226,4 +226,12 @@ function countOnes(i) {
 function sum2(a, b) {
 	return `${BigInt(a) + BigInt(b)}`
 }
-console.log(sum2('5125515215521515', '125261616261626'))
+// console.log(sum2('5125515215521515', '125261616261626'))
+
+/**Distance Between Two Points */
+function getDistance(a, b) {
+	const hypothenuse = Math.sqrt((b.x - a.x) ** 2 + (b.y - a.y) ** 2)
+	return +hypothenuse.toFixed(3)
+}
+
+// console.log(getDistance({ x: -2, y: 1 }, { x: 4, y: 3 }))
