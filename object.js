@@ -404,3 +404,31 @@ function calculateLosses(obj) {
 // 	})
 // )
 // console.log(calculateLosses({}))
+
+/**Can You Spare a Square? */
+function tpChecker(home) {
+	const reserve = Math.floor((home.tp * 500) / 57 / home.people)
+	if (reserve >= 14)
+		return `Your TP will last ${reserve} days, no need to panic!`
+	return `Your TP will only last ${reserve} days, buy more!`
+}
+// console.log(tpChecker({ people: 4, tp: 1 }))
+// console.log(tpChecker({ people: 3, tp: 20 }))
+// console.log(tpChecker({ people: 4, tp: 12 }))
+
+/**Frequency Distribution */
+function getFrequencies(arr) {
+	let map = arr.reduce((map, item) => {
+		map[item] = map[item] + 1 || 1
+		return map
+	}, {})
+	return map
+
+	const set = [...new Set(arr)]
+	const count = set.map(item => arr.filter(el => el == item).length)
+	const obj = set.reduce((obj, key, i) => ({ ...obj, [key]: count[i] }), {})
+	return obj
+}
+// console.log(getFrequencies(['A', 'B', 'A', 'A', 'A']))
+// console.log(getFrequencies([1, 2, 3, 3, 2]))
+// console.log(getFrequencies([true, false, true, false, false]))
