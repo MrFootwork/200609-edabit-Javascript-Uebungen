@@ -432,3 +432,15 @@ function getFrequencies(arr) {
 // console.log(getFrequencies(['A', 'B', 'A', 'A', 'A']))
 // console.log(getFrequencies([1, 2, 3, 3, 2]))
 // console.log(getFrequencies([true, false, true, false, false]))
+
+/**Burglary Series (08): Remove an Entry */
+function removeEntry(obj, itemName) {
+	let copy = { ...obj }
+	delete copy[itemName]
+	return copy
+}
+// const random = Math.random()
+// const obj = { piano: random, tv: 100 }
+// const obj2 = { piano: random, tv: 100, skate: 50 }
+// console.log(removeEntry(obj2, 'tv'))
+// console.log(removeEntry(obj, 'tv'))
