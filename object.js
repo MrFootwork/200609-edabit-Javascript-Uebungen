@@ -444,3 +444,32 @@ function removeEntry(obj, itemName) {
 // const obj2 = { piano: random, tv: 100, skate: 50 }
 // console.log(removeEntry(obj2, 'tv'))
 // console.log(removeEntry(obj, 'tv'))
+
+/** Expensive Orders*/
+function expensiveOrders(orders, cost) {
+	return Object.fromEntries(
+		Object.entries(orders).filter(([key, value]) => value > cost)
+	)
+	let costlyOrders = {}
+	for (item in orders) {
+		if (orders[item] > cost) {
+			costlyOrders[item] = orders[item]
+		}
+	}
+	return costlyOrders
+}
+console.log(expensiveOrders({ a: 3000, b: 200, c: 1050 }, 1000))
+console.log(
+	expensiveOrders(
+		{
+			'Gucci Fur': 24600,
+			'Teak Dining Table': 3200,
+			'Louis Vutton Bag': 5550,
+			'Dolce Gabana Heels': 4000,
+		},
+		20000
+	)
+)
+console.log(
+	expensiveOrders({ 'Deluxe Burger': 35, 'Icecream Shake': 4, 'Fries': 5 }, 40)
+)
