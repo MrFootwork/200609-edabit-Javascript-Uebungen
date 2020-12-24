@@ -148,7 +148,38 @@ function selfDescriptive(n) {
 	return descriptiveDigits
 	return descriptiveDigits.every(description => description)
 }
-console.log(selfDescriptive(22))
-console.log(selfDescriptive(3999))
-console.log(selfDescriptive(31331419))
-console.log(selfDescriptive(613223141526171819))
+// console.log(selfDescriptive(22))
+// console.log(selfDescriptive(3999))
+// console.log(selfDescriptive(31331419))
+// console.log(selfDescriptive(613223141526171819))
+
+/**Validate Credit Card Number */
+function validateCard(num) {
+	num = [...('' + num)]
+	const digitLength = num.length
+	if (!(digitLength >= 14 && digitLength <= 19)) return false
+	// 1. remove last digit
+	const checkDigit = +num.pop()
+	// 2. reverse number
+	num = num.reverse()
+	// 3. selective doubling
+	num = num.map((digit, i) => {
+		if (!(i % 2)) {
+			if (2 * digit >= 10) {
+				return [...('' + 2 * digit)].reduce((sum, digit) => sum + +digit, 0)
+			} else {
+				return 2 * digit
+			}
+		}
+		return +digit
+	})
+	// 4. add all digits
+	num = num.reduce((sum, digit) => sum + digit, 0)
+	// 5. final check
+	num = [...('' + num)]
+	return 10 - num[num.length - 1] === checkDigit
+}
+
+console.log(validateCard(1234567890123456))
+console.log(validateCard(1234567890123452))
+console.log(validateCard(79927398713))
