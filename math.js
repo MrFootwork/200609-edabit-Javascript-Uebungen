@@ -224,6 +224,7 @@ function countOnes(i) {
 
 /**Sum of Two Numbers (with a twist!)*/
 function sum2(a, b) {
+	??
 	return `${BigInt(a) + BigInt(b)}`
 }
 // console.log(sum2('5125515215521515', '125261616261626'))
@@ -233,5 +234,13 @@ function getDistance(a, b) {
 	const hypothenuse = Math.sqrt((b.x - a.x) ** 2 + (b.y - a.y) ** 2)
 	return +hypothenuse.toFixed(3)
 }
-
 // console.log(getDistance({ x: -2, y: 1 }, { x: 4, y: 3 }))
+
+/**Integer Digits Count */
+function count(n) {
+	if (n < 0) n = -n
+	if (n < 10) return 1
+	return 1 + count(Math.floor(n / 10))
+}
+console.log(count(318))
+console.log(count(-92563))

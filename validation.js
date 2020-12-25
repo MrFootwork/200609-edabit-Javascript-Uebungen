@@ -180,6 +180,6 @@ function validateCard(num) {
 	return 10 - num[num.length - 1] === checkDigit
 }
 
-console.log(validateCard(1234567890123456))
-console.log(validateCard(1234567890123452))
-console.log(validateCard(79927398713))
+// console.log(validateCard(1234567890123456))
+// console.log(validateCard(1234567890123452))
+// console.log(validateCard(79927398713))
