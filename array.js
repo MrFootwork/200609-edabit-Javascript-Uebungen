@@ -601,3 +601,15 @@ function getTotalPrice(groceries) {
 // 		{ product: 'Cereals', quantity: 1, price: 2.5 },
 // 	])
 // )
+
+/**Happy Numbers */
+function portionHappy(numbers) {
+	const happiness = numbers.map((num, i) => {
+		if (numbers[i - 1] === num || numbers[i + 1] === num) return 1
+		return 0
+	})
+	return happiness.reduce((sum, num) => sum + num, 0) / numbers.length
+}
+// console.log(portionHappy([0, 1, 0, 1, 0]))
+// console.log(portionHappy([0, 1, 1, 0]))
+// console.log(portionHappy([1, 0, 0, 1, 1]))
