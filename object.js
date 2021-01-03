@@ -458,18 +458,58 @@ function expensiveOrders(orders, cost) {
 	}
 	return costlyOrders
 }
-console.log(expensiveOrders({ a: 3000, b: 200, c: 1050 }, 1000))
-console.log(
-	expensiveOrders(
-		{
-			'Gucci Fur': 24600,
-			'Teak Dining Table': 3200,
-			'Louis Vutton Bag': 5550,
-			'Dolce Gabana Heels': 4000,
-		},
-		20000
+// console.log(expensiveOrders({ a: 3000, b: 200, c: 1050 }, 1000))
+// console.log(
+// 	expensiveOrders(
+// 		{
+// 			'Gucci Fur': 24600,
+// 			'Teak Dining Table': 3200,
+// 			'Louis Vutton Bag': 5550,
+// 			'Dolce Gabana Heels': 4000,
+// 		},
+// 		20000
+// 	)
+// )
+// console.log(
+// 	expensiveOrders({ 'Deluxe Burger': 35, 'Icecream Shake': 4, 'Fries': 5 }, 40)
+// )
+
+/**Ungroup Data in an Objec */
+function ungroupStudents(students) {
+	return students.flatMap(({ teacher, data }) =>
+		data.map(student => ({ teacher, ...student }))
 	)
-)
-console.log(
-	expensiveOrders({ 'Deluxe Burger': 35, 'Icecream Shake': 4, 'Fries': 5 }, 40)
-)
+
+	return students.reduce((all, { teacher, data }) => {
+		data.forEach(student => {
+			all.push({ teacher: teacher, ...student })
+		})
+		return all
+	}, [])
+}
+// console.log(
+// 	ungroupStudents([
+// 		{
+// 			teacher: 'Ms. Car',
+// 			data: [
+// 				{
+// 					name: 'James',
+// 					emergenceNumber: '617-771-1082',
+// 				},
+// 				{
+// 					name: 'Alice',
+// 					alergies: ['nuts', 'carrots'],
+// 				},
+// 			],
+// 		},
+// 		{
+// 			teacher: 'Mr. Lamb',
+// 			data: [
+// 				{
+// 					name: 'Aaron',
+// 					age: 3,
+// 				},
+// 			],
+// 		},
+// 	])
+// )
